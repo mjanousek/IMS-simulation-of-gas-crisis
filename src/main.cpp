@@ -8,7 +8,7 @@
 
 
 /*
-cesko 	import 	transportort 	produkce 	spotreba 	zasobniky 	maximalniOdber
+cesko 	import 	export	produkce 	spotreba 	zasobniky 	maximalniOdber
 cesko 	968 	1 		29 			968 		3436000
 polsko 	1424 	11 		708 		2081 		2225000
 slov 	637 	0 		14 			664 		3020000
@@ -152,16 +152,16 @@ int main() {
     insertTransport(transporty, positiontransportort++, 3, 		4, 		1108);
 	insertTransport(transporty, positiontransportort++, 0, 		2, 		67);
 
-//	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
-	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);			//0
-	insertStat(staty,position++, "Sl", 	664, 	3020000, 3020000, 14);			//1
-	insertStat(staty,position++, "Po", 	2081, 	2225000, 2225000, 708);		//2
-	insertStat(staty,position++, "Md",	1053, 	6330000, 6330000, 223);			//3
-	insertStat(staty,position++, "Ua", 	5882, 	3195000, 3195000, 2288);		//4
+//	INSERT staty, position, 	jmeno,	sportreba,  velZasob, 	zasoby,  produkce
+	insertStat(staty,position++, "Cz", 	968, 		3436000, 	3436000, 29);			//0
+	insertStat(staty,position++, "Sl", 	664, 		3020000, 	3020000, 14);			//1
+	insertStat(staty,position++, "Po", 	2081, 		2225000, 	2225000, 708);		//2
+	insertStat(staty,position++, "Md",	1053, 		6330000, 	6330000, 223);			//3
+	insertStat(staty,position++, "Ua", 	5882, 		3195000, 	3195000, 2288);		//4
 
 
 	int i = 0;
-	while(i < 89*24){
+	while(i < 365*24){
 
 		cout<< "---------------" <<endl;
 		printTime(i);
@@ -183,6 +183,11 @@ int main() {
 				//odstranit stat ze struktury statu
 			}
 			cout << "stat:" << staty[j].jmeno << " stav:" << staty[j].zasoba << endl;
+			if(staty[j].zasoba == 0) {
+				int a;
+				staty[j].zasoba = 100000000; 
+				scanf("%d",&a);
+			}
 
 		}
 
