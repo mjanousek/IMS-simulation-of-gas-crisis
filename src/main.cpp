@@ -30,6 +30,8 @@ ukr 	3139 	0 		2288 		5882 		3195000
 
 using namespace std;
 
+enum nameCountry { CZ, SK, PL, HU, UA };
+
 typedef struct STerminal{
 //	int zasoba = 0;
 //	int maxVydej = 0;
@@ -51,6 +53,8 @@ typedef struct Stat{
 	long zasoba = 0;
 	long kapacita = 0;
 }stat;
+
+
 
 void insertStat( stat staty[],int position, string jmeno, long sportreba, long kapacita, long zasoba, long produkce){
 
@@ -133,7 +137,7 @@ int main() {
 
 	stat staty[5];
 	sTransport transporty[2];
-	sTerminal terminaly[3];
+	sTerminal terminaly[8];
 
     int position = 0;
     int positiontransportort = 0;
@@ -141,32 +145,32 @@ int main() {
 
 //	INSERT 			terminaly, position, 			dst, 	mnozstvi
 //  NEMECKO
-    insertTerminal(	terminaly, positionTerminal++, 	2, 		259);
+    insertTerminal(	terminaly, positionTerminal++, 	PL,		259);
 //  Kazachstan
-    insertTerminal(	terminaly, positionTerminal++, 	4, 		62);
+    insertTerminal(	terminaly, positionTerminal++, 	UA,		62);
 //  Norsko
-    insertTerminal(	terminaly, positionTerminal++, 	0, 		1);
+    insertTerminal(	terminaly, positionTerminal++, 	CZ,		1);
 
-
-//  Rusko
-	insertTerminal(	terminaly, positionTerminal++, 	0, 		8475);
-	insertTerminal(	terminaly, positionTerminal++, 	1, 		5509);
-	insertTerminal(	terminaly, positionTerminal++, 	2, 		9615);
-	insertTerminal(	terminaly, positionTerminal++, 	3, 		8176);
-	insertTerminal(	terminaly, positionTerminal++, 	4, 		25840);
+//
+////  Rusko
+	insertTerminal(	terminaly, positionTerminal++, 	CZ, 	967);
+	insertTerminal(	terminaly, positionTerminal++, 	SK, 	629);
+	insertTerminal(	terminaly, positionTerminal++, 	PL, 	1097);
+	insertTerminal(	terminaly, positionTerminal++, 	HU, 	933);
+	insertTerminal(	terminaly, positionTerminal++, 	UA, 	2949);
 
 
 //	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
-    insertTransport(transporty, positiontransportort++, 3, 		4, 		1108);
-	insertTransport(transporty, positiontransportort++, 0, 		2, 		67);
+    insertTransport(transporty, positiontransportort++, HU,		UA,		126);
+	insertTransport(transporty, positiontransportort++, CZ,		PL,		67);
 
 
 //	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
-	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);			//0
-	insertStat(staty,position++, "Sl", 	664, 	3020000, 3020000, 14);			//1
-	insertStat(staty,position++, "Po", 	2081, 	2225000, 2225000, 708);		//2
-	insertStat(staty,position++, "Md",	1053, 	6330000, 6330000, 223);			//3
-	insertStat(staty,position++, "Ua", 	5882, 	3195000, 3195000, 2288);		//4
+	insertStat(staty,position++, "Cz", 	968, 	3436000, 2000000, 29);			//0
+	insertStat(staty,position++, "Sl", 	664, 	3020000, 1500000, 14);			//1
+	insertStat(staty,position++, "Pl", 	2081, 	2225000, 1000000, 708);		//2
+	insertStat(staty,position++, "Hu",	1053, 	6330000, 2000000, 223);			//3
+	insertStat(staty,position++, "Ua", 	5882, 	3195000, 1000000, 2288);		//4
 
 
 
