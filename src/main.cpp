@@ -110,6 +110,10 @@ bool importFromTerminal(stat staty[], sTerminal * terminal){
 }
 
 bool spotrebuj(stat * s){
+	//produkce
+	s->zasoba += s->produkce;
+
+	//spotreba
 	if(s->zasoba > s->spotreba){
 		s->zasoba -= s->spotreba;
 		return true;
@@ -131,18 +135,24 @@ int main() {
     int positionTerminal = 0;
 
 //	INSERT 			terminaly, position, 			dst, 	mnozstvi
-    insertTerminal(	terminaly, positionTerminal++, 	4, 		12000);
+//  NEMECKO
+    insertTerminal(	terminaly, positionTerminal++, 	2, 		259);
+//  Kazachstan
+    insertTerminal(	terminaly, positionTerminal++, 	4, 		62);
+//  Norsko
+    insertTerminal(	terminaly, positionTerminal++, 	0, 		1);
+
 
 //	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
-    insertTransport(transporty, positiontransportort++, 4, 		0, 		1000);
-	insertTransport(transporty, positiontransportort++, 4, 		1, 		700);
+    insertTransport(transporty, positiontransportort++, 3, 		4, 		1108);
+	insertTransport(transporty, positiontransportort++, 0, 		2, 		67);
 
 //	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
-	insertStat(staty,position++, "Cz", 	968, 	3436000, 0, 29);		//0
-	insertStat(staty,position++, "Sl", 	664, 	3020000, 0, 14);		//1
-	insertStat(staty,position++, "Po", 	2081, 	2225000, 0, 708);		//2
-	insertStat(staty,position++, "Md",	1053, 	6330000, 0, 223);		//3
-	insertStat(staty,position++, "Ua", 	5882, 	3195000, 0, 2288);		//4
+	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);		//0
+	insertStat(staty,position++, "Sl", 	664, 	3020000, 3020000, 14);		//1
+	insertStat(staty,position++, "Po", 	2081, 	2225000, 02225000, 708);		//2
+	insertStat(staty,position++, "Md",	1053, 	6330000, 6330000, 223);		//3
+	insertStat(staty,position++, "Ua", 	5882, 	3195000, 3195000, 2288);		//4
 
 
 	int i = 0;
