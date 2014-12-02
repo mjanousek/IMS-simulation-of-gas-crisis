@@ -85,7 +85,7 @@ bool transportuj(stat staty[], sTransport * transport){
 //	TODO zohlednit transport do jinych zemi ktere nemapujeme! dat podminku
 //	ze se nebude nic ukladat jen se odebere
 //	TODO zkontrolovat podminku
-	if((staty[transport->src].zasoba > transport->mnozstvi) && (staty[transport->dst].zasoba <= (staty[transport->dst].zasoba + transport->mnozstvi))){
+	if((staty[transport->src].zasoba > transport->mnozstvi) && (staty[transport->dst].kapacita >= (staty[transport->dst].zasoba + transport->mnozstvi))){
 		cout<<"Spotrebovavam"<<endl;
 		staty[transport->src].zasoba -= transport->mnozstvi;
 		staty[transport->dst].zasoba += transport->mnozstvi;
@@ -99,7 +99,7 @@ bool transportuj(stat staty[], sTransport * transport){
 }
 
 bool importFromTerminal(stat staty[], sTerminal * terminal){
-	if((staty[terminal->dst].zasoba <= (staty[terminal->dst].zasoba + terminal->mnozstvi))){
+	if((staty[terminal->dst].kapacita >= (staty[terminal->dst].zasoba + terminal->mnozstvi))){
 		cout<<"import from terminal mnozstvi:" << terminal->mnozstvi << " do:" << terminal->dst <<endl;
 		staty[terminal->dst].zasoba += terminal->mnozstvi;
 		return true;
@@ -128,7 +128,7 @@ int main() {
 
 	stat staty[5];
 	sTransport transporty[2];
-	sTerminal terminaly[2];
+	sTerminal terminaly[3];
 
     int position = 0;
     int positiontransportort = 0;
@@ -148,10 +148,10 @@ int main() {
 	insertTransport(transporty, positiontransportort++, 0, 		2, 		67);
 
 //	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
-	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);		//0
-	insertStat(staty,position++, "Sl", 	664, 	3020000, 3020000, 14);		//1
+	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);			//0
+	insertStat(staty,position++, "Sl", 	664, 	3020000, 3020000, 14);			//1
 	insertStat(staty,position++, "Po", 	2081, 	2225000, 02225000, 708);		//2
-	insertStat(staty,position++, "Md",	1053, 	6330000, 6330000, 223);		//3
+	insertStat(staty,position++, "Md",	1053, 	6330000, 6330000, 223);			//3
 	insertStat(staty,position++, "Ua", 	5882, 	3195000, 3195000, 2288);		//4
 
 
