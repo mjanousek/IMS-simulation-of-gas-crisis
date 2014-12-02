@@ -26,6 +26,8 @@ ukr 	3139 	0 		2288 		5882 		3195000
 #include <iostream>
 #include <list>
 #include <iterator>
+#include <stdio.h>
+
 using namespace std;
 
 typedef struct STerminal{
@@ -153,13 +155,13 @@ int main() {
 //	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
 	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);			//0
 	insertStat(staty,position++, "Sl", 	664, 	3020000, 3020000, 14);			//1
-	insertStat(staty,position++, "Po", 	2081, 	2225000, 02225000, 708);		//2
+	insertStat(staty,position++, "Po", 	2081, 	2225000, 2225000, 708);		//2
 	insertStat(staty,position++, "Md",	1053, 	6330000, 6330000, 223);			//3
 	insertStat(staty,position++, "Ua", 	5882, 	3195000, 3195000, 2288);		//4
 
 
 	int i = 0;
-	while(i < 365*24){
+	while(i < 89*24){
 
 		cout<< "---------------" <<endl;
 		printTime(i);
@@ -190,6 +192,8 @@ int main() {
 				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
 			}
 		}
+
+
 
 		++i;
 
