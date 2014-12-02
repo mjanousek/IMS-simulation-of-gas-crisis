@@ -123,6 +123,9 @@ bool spotrebuj(stat * s){
 	}
 }
 
+void printTime(int timeHours) {
+	printf("Day: %d Hours: %d\n", timeHours/24, timeHours%24);
+}
 
 int main() {
 
@@ -156,9 +159,10 @@ int main() {
 
 
 	int i = 0;
-	while(i < 10){
+	while(i < 365*24){
 
 		cout<< "---------------" <<endl;
+		printTime(i);
 		stat a;
 
 		//tady vlozit z terminalu nebo ze zdroju
@@ -188,13 +192,7 @@ int main() {
 		}
 
 		++i;
+
 	}
-
-
-
-
-
-
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }
