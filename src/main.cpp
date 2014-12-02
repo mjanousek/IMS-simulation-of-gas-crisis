@@ -148,9 +148,18 @@ int main() {
     insertTerminal(	terminaly, positionTerminal++, 	0, 		1);
 
 
+//  Rusko
+	insertTerminal(	terminaly, positionTerminal++, 	0, 		8475);
+	insertTerminal(	terminaly, positionTerminal++, 	1, 		5509);
+	insertTerminal(	terminaly, positionTerminal++, 	2, 		9615);
+	insertTerminal(	terminaly, positionTerminal++, 	3, 		8176);
+	insertTerminal(	terminaly, positionTerminal++, 	4, 		25840);
+
+
 //	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
     insertTransport(transporty, positiontransportort++, 3, 		4, 		1108);
 	insertTransport(transporty, positiontransportort++, 0, 		2, 		67);
+
 
 //	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
 	insertStat(staty,position++, "Cz", 	968, 	3436000, 3436000, 29);			//0
