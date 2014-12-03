@@ -32,6 +32,7 @@ using namespace std;
 
 enum nameCountry { CZ, SK, PL, HU, UA };
 float nextSeason = 90.0;
+int RO = 1;
 
 typedef struct STerminal{
 //	int zasoba = 0;
@@ -49,7 +50,7 @@ typedef struct STransport{
 typedef struct Stat{
 	//jednotky 100 m^3
 	string jmeno;
-	long spotreba = 0;
+	long spotreba[2];
 	long produkce = 0;
 	long zasoba = 0;
 	long kapacita = 0;
@@ -57,11 +58,12 @@ typedef struct Stat{
 
 
 
-void insertStat( sCountry staty[],int position, string jmeno, long sportreba, long kapacita, long zasoba, long produkce){
+void insertStat( sCountry staty[],int position, string jmeno, long sportrebaLeto, long sportrebaZima, long kapacita, long zasoba, long produkce){
 
 	sCountry pom;
 	pom.jmeno = jmeno;
-	pom.spotreba = sportreba;
+	pom.spotreba[0] = sportrebaLeto;
+	pom.spotreba[1] = sportrebaZima;
 	pom.zasoba = zasoba;
 	pom.produkce = produkce;
 	pom.kapacita = kapacita;
@@ -121,8 +123,9 @@ bool spotrebuj(sCountry * s){
 	s->zasoba += s->produkce;
 
 	//spotreba
-	if(s->zasoba > s->spotreba){
-		s->zasoba -= s->spotreba;
+	cout << s->spotreba[RO] <<endl;
+	if(s->zasoba > s->spotreba[RO]){
+		s->zasoba -= s->spotreba[RO];
 		return true;
 	}else{
 		s->zasoba = 0;
@@ -131,7 +134,7 @@ bool spotrebuj(sCountry * s){
 }
 
 void revertSeason() {
-
+	RO = (RO+1)%2;
 }
 
 void printTime(int timeHours) {
@@ -181,12 +184,12 @@ int main() {
 	insertTransport(transporty, positiontransportort++, CZ,		PL,		67);
 
 
-//	INSERT staty, position, jmeno, 		sportreba,  velZasob, zasoby,  produkce
-	insertStat(staty,position++, "Cz", 	968, 	3436000, 2000000, 29);			//0
-	insertStat(staty,position++, "Sl", 	664, 	3020000, 1500000, 14);			//1
-	insertStat(staty,position++, "Pl", 	2081, 	2225000, 1000000, 708);		//2
-	insertStat(staty,position++, "Hu",	1053, 	6330000, 2000000, 223);			//3
-	insertStat(staty,position++, "Ua", 	5882, 	3195000, 1000000, 2288);		//4
+//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
+	insertStat(staty,position++, "Cz", 	270, 		600, 	3436000, 2000000, 29);			//0
+	insertStat(staty,position++, "Sl", 	172, 		352, 	3020000, 1500000, 14);			//1
+	insertStat(staty,position++, "Pl", 	688, 		974, 	2225000, 1000000, 708);		//2
+	insertStat(staty,position++, "Hu",	287, 		673, 	6330000, 2000000, 223);			//3
+	insertStat(staty,position++, "Ua", 	1637, 		4323, 	3195000, 1000000, 2288);		//4
 
 
 
