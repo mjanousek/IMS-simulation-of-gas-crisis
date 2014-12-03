@@ -27,12 +27,17 @@ ukr 	3139 	0 		2288 		5882 		3195000
 #include <list>
 #include <iterator>
 #include <stdio.h>
+#include <vector>
 
 using namespace std;
 
-enum nameCountry { CZ, SK, PL, HU, UA };
+//TE - terminal
+enum nameCountry { CZ, SK, PL, HU, UA, TE };
 float nextSeason = 90.0;
+//rocni obdobi
 int RO = 1;
+//procenta Rusko
+float PR = 1.0;
 
 typedef struct STerminal{
 //	int zasoba = 0;
@@ -47,6 +52,13 @@ typedef struct STransport{
 	long mnozstvi;
 }sTransport;
 
+typedef struct STransakce{
+
+	int dst;
+	long mnozstvi;
+	int time;
+}sTransakce;
+
 typedef struct Stat{
 	//jednotky 100 m^3
 	string jmeno;
@@ -56,9 +68,21 @@ typedef struct Stat{
 	long kapacita = 0;
 }sCountry;
 
+//vektor transakci
+vector<sTransakce> transakce;
 
+//zeme
+sCountry 	staty[5];
+//transporty
+sTransport 	transporty[2];
+//terminaly
+sTerminal 	terminaly[8];
 
-void insertStat( sCountry staty[],int position, string jmeno, long sportrebaLeto, long sportrebaZima, long kapacita, long zasoba, long produkce){
+int position = 0;
+int positiontransportort = 0;
+int positionTerminal = 0;
+
+void insertStat(int position, string jmeno, long sportrebaLeto, long sportrebaZima, long kapacita, long zasoba, long produkce){
 
 	sCountry pom;
 	pom.jmeno = jmeno;
@@ -71,17 +95,16 @@ void insertStat( sCountry staty[],int position, string jmeno, long sportrebaLeto
 	staty[position] = pom;
 }
 
-void insertTransport(sTransport transport[], int position, int src, int dst, long mnozstvi){
+void insertTransport(int position, int src, int dst, long mnozstvi){
 
 	sTransport pom;
-	pom.src = src;
 	pom.dst = dst;
 	pom.mnozstvi = mnozstvi;
 
-	transport[position] = pom;
+	transporty[position] = pom;
 }
 
-void insertTerminal(sTerminal terminaly[],int position, int dst, long mnozstvi){
+void insertTerminal(int position, int dst, long mnozstvi){
 
 	sTerminal pom;
 	pom.dst = dst;
@@ -90,7 +113,7 @@ void insertTerminal(sTerminal terminaly[],int position, int dst, long mnozstvi){
 	terminaly[position] = pom;
 }
 
-bool transportuj(sCountry staty[], sTransport * transport){
+bool transportuj(sTransport * transport){
 //	TODO zohlednit transport do jinych zemi ktere nemapujeme! dat podminku
 //	ze se nebude nic ukladat jen se odebere
 //	TODO zkontrolovat podminku
@@ -107,7 +130,52 @@ bool transportuj(sCountry staty[], sTransport * transport){
 	}
 }
 
-bool importFromTerminal(sCountry staty[], sTerminal * terminal){
+void transakceTerminal(sTerminal * terminal){
+	sTransakce pom;
+	pom.dst = terminal->dst;
+	pom.mnozstvi = terminal->mnozstvi;
+	//pridat delku k transakci
+	pom.time = 0;
+	transakce.push_back(pom);
+}
+
+bool transakceTransport(sTransport * transport){
+	if(staty[transport->src].zasoba > transport->mnozstvi){
+		sTransakce pom;
+		pom.dst = transport->dst;
+		pom.mnozstvi = transport->mnozstvi;
+		//pridat delku k transakci
+		pom.time = 0;
+		transakce.push_back(pom);
+		return true;
+	}else{
+		cout << staty[transport->src].jmeno << ":Nelze provest transport, v zasobniku je malo plynu.";
+		return false;
+	}
+}
+
+bool transakceProved(sTransakce transakce){
+	if((staty[transakce.dst].kapacita >= (staty[transakce.dst].zasoba + transakce.mnozstvi))){
+		cout<<"transakce:" << transakce.mnozstvi << " do:" << transakce.dst <<endl;
+		staty[transakce.dst].zasoba += transakce.mnozstvi;
+		return true;
+	}else{
+//	TODO action co se ma stat
+		return false;
+	}
+}
+
+
+void transakceCheck(){
+	for (unsigned int i = 0; i < transakce.size(); ++i) {
+		if(transakce.at(i).time == 0){
+			sTransakce t = transakce.at(i);
+			transakceProved(t);
+			transakce.erase(transakce.begin()+i);
+		}
+	}
+}
+bool importFromTerminal(sTerminal * terminal){
 	if((staty[terminal->dst].kapacita >= (staty[terminal->dst].zasoba + terminal->mnozstvi))){
 		cout<<"import from terminal mnozstvi:" << terminal->mnozstvi << " do:" << terminal->dst <<endl;
 		staty[terminal->dst].zasoba += terminal->mnozstvi;
@@ -123,7 +191,7 @@ bool spotrebuj(sCountry * s){
 	s->zasoba += s->produkce;
 
 	//spotreba
-	cout << s->spotreba[RO] <<endl;
+//	cout << s->spotreba[RO] <<endl;
 	if(s->zasoba > s->spotreba[RO]){
 		s->zasoba -= s->spotreba[RO];
 		return true;
@@ -147,50 +215,111 @@ void printTime(int timeHours) {
 	}
 }
 
-int main() {
+/************************************************************************************
+ *
+ * 								Testy
+ *
+ ************************************************************************************/
 
-	sCountry staty[5];
-	sTransport transporty[2];
-	sTerminal terminaly[8];
+//////////////////////////////////////////////////////////////////////////////////////
+//								Test 1												//
+//////////////////////////////////////////////////////////////////////////////////////
 
-    int position = 0;
-    int positiontransportort = 0;
-    int positionTerminal = 0;
+void testOdpojeniRuska(){
+
+//	sCountry staty[5];
+//	sTransport transporty[2];
+//	sTerminal terminaly[8];
+
+
 
     int b;
     scanf("%d",&b);
     if(b == 1) {
     	//
 		////  Rusko
-		insertTerminal(	terminaly, positionTerminal++, 	CZ, 	967);
-		insertTerminal(	terminaly, positionTerminal++, 	SK, 	629);
-		insertTerminal(	terminaly, positionTerminal++, 	PL, 	1097);
-		insertTerminal(	terminaly, positionTerminal++, 	HU, 	933);
-		insertTerminal(	terminaly, positionTerminal++, 	UA, 	2949);
+		insertTerminal(positionTerminal++, 	CZ, 	967);
+		insertTerminal(positionTerminal++, 	SK, 	629);
+		insertTerminal(positionTerminal++, 	PL, 	1097);
+		insertTerminal(positionTerminal++, 	HU, 	933);
+		insertTerminal(positionTerminal++, 	UA, 	2949);
     }
 
 
 //	INSERT 			terminaly, position, 			dst, 	mnozstvi
 //  NEMECKO
-    insertTerminal(	terminaly, positionTerminal++, 	PL,		259);
+    insertTerminal(positionTerminal++, 	PL,		259);
 //  Kazachstan
-    insertTerminal(	terminaly, positionTerminal++, 	UA,		62);
+    insertTerminal(positionTerminal++, 	UA,		62);
 //  Norsko
-    insertTerminal(	terminaly, positionTerminal++, 	CZ,		1);
+    insertTerminal(positionTerminal++, 	CZ,		1);
 
 
 //	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
-    insertTransport(transporty, positiontransportort++, HU,		UA,		126);
-	insertTransport(transporty, positiontransportort++, CZ,		PL,		67);
+    insertTransport(positiontransportort++, HU,		UA,		126);
+	insertTransport(positiontransportort++, CZ,		PL,		67);
 
 
 //	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-	insertStat(staty,position++, "Cz", 	270, 		600, 	3436000, 2000000, 29);			//0
-	insertStat(staty,position++, "Sl", 	172, 		352, 	3020000, 1500000, 14);			//1
-	insertStat(staty,position++, "Pl", 	688, 		974, 	2225000, 1000000, 708);		//2
-	insertStat(staty,position++, "Hu",	287, 		673, 	6330000, 2000000, 223);			//3
-	insertStat(staty,position++, "Ua", 	1637, 		4323, 	3195000, 1000000, 2288);		//4
+	insertStat(position++, "Cz", 	270, 		600, 	3436000, 3436000, 29);			//0
+	insertStat(position++, "Sl", 	172, 		352, 	3020000, 3020000, 14);			//1
+	insertStat(position++, "Pl", 	688, 		974, 	2225000, 2225000, 708);		//2
+	insertStat(position++, "Hu",	287, 		673, 	6330000, 6330000, 223);			//3
+	insertStat(position++, "Ua", 	1637, 		4323, 	3195000, 3195000, 2288);		//4
 
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+//								Test 1												//
+//////////////////////////////////////////////////////////////////////////////////////
+
+void testPripojeniUSA(){
+
+	PR = 0.6;
+
+    position = 0;
+    positiontransportort = 0;
+    positionTerminal = 0;
+
+	////  Rusko
+	insertTerminal(positionTerminal++, 	CZ, 	967	* PR);
+	insertTerminal(positionTerminal++, 	SK, 	629	* PR);
+	insertTerminal(positionTerminal++, 	PL, 	1097* PR);
+	insertTerminal(positionTerminal++, 	HU, 	933	* PR);
+	insertTerminal(positionTerminal++, 	UA, 	2949* PR);
+
+
+//	INSERT 			terminaly, position, 			dst, 	mnozstvi
+//  NEMECKO
+    insertTerminal(positionTerminal++, 	PL,		259);
+//  Kazachstan
+    insertTerminal(positionTerminal++, 	UA,		62);
+//  Norsko
+    insertTerminal(positionTerminal++, 	CZ,		1);
+
+//  USA
+    insertTerminal(positionTerminal++, 	CZ,		1);
+    insertTerminal(positionTerminal++, 	CZ,		1);
+
+
+//	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
+    insertTransport(positiontransportort++, HU,		UA,		126);
+	insertTransport(positiontransportort++, CZ,		PL,		67);
+
+
+//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
+	insertStat(position++, "Cz", 	270, 		600, 	3436000, 2000000, 29);			//0
+	insertStat(position++, "Sl", 	172, 		352, 	3020000, 1500000, 14);			//1
+	insertStat(position++, "Pl", 	688, 		974, 	2225000, 1000000, 708);		//2
+	insertStat(position++, "Hu",	287, 		673, 	6330000, 2000000, 223);			//3
+	insertStat(position++, "Ua", 	1637, 		4323, 	3195000, 1000000, 2288);		//4
+
+}
+
+
+int main() {
+
+	testOdpojeniRuska();
 
 
 	int i = 0;
@@ -203,9 +332,10 @@ int main() {
 		//tady vlozit z terminalu nebo ze zdroju
 
 		for (int l = 0; l < positionTerminal; l++) {
-			if(!importFromTerminal(staty, &terminaly[l])){
-				cout << "Full zasobnik" <<endl;
-			}
+//			if(!importFromTerminal(&terminaly[l])){
+//				cout << "Full zasobnik" <<endl;
+//			}
+			transakceTerminal(&terminaly[l]);
 		}
 
 
@@ -225,11 +355,15 @@ int main() {
 
 
 		for (int k = 0; k < positiontransportort; k++) {
-			if(!transportuj(staty, &transporty[k])){
-				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
-			}
+//			if(!transportuj(&transporty[k])){
+//				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
+//			}
+			transakceTransport(&transporty[k]);
+
 		}
 
+
+		transakceCheck();
 
 
 		++i;
