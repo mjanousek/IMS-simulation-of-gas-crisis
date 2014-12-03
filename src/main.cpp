@@ -31,6 +31,7 @@ ukr 	3139 	0 		2288 		5882 		3195000
 using namespace std;
 
 enum nameCountry { CZ, SK, PL, HU, UA };
+float nextSeason = 90.0;
 
 typedef struct STerminal{
 //	int zasoba = 0;
@@ -52,13 +53,13 @@ typedef struct Stat{
 	long produkce = 0;
 	long zasoba = 0;
 	long kapacita = 0;
-}stat;
+}sCountry;
 
 
 
-void insertStat( stat staty[],int position, string jmeno, long sportreba, long kapacita, long zasoba, long produkce){
+void insertStat( sCountry staty[],int position, string jmeno, long sportreba, long kapacita, long zasoba, long produkce){
 
-	stat pom;
+	sCountry pom;
 	pom.jmeno = jmeno;
 	pom.spotreba = sportreba;
 	pom.zasoba = zasoba;
@@ -87,7 +88,7 @@ void insertTerminal(sTerminal terminaly[],int position, int dst, long mnozstvi){
 	terminaly[position] = pom;
 }
 
-bool transportuj(stat staty[], sTransport * transport){
+bool transportuj(sCountry staty[], sTransport * transport){
 //	TODO zohlednit transport do jinych zemi ktere nemapujeme! dat podminku
 //	ze se nebude nic ukladat jen se odebere
 //	TODO zkontrolovat podminku
@@ -104,7 +105,7 @@ bool transportuj(stat staty[], sTransport * transport){
 	}
 }
 
-bool importFromTerminal(stat staty[], sTerminal * terminal){
+bool importFromTerminal(sCountry staty[], sTerminal * terminal){
 	if((staty[terminal->dst].kapacita >= (staty[terminal->dst].zasoba + terminal->mnozstvi))){
 		cout<<"import from terminal mnozstvi:" << terminal->mnozstvi << " do:" << terminal->dst <<endl;
 		staty[terminal->dst].zasoba += terminal->mnozstvi;
@@ -115,7 +116,7 @@ bool importFromTerminal(stat staty[], sTerminal * terminal){
 	}
 }
 
-bool spotrebuj(stat * s){
+bool spotrebuj(sCountry * s){
 	//produkce
 	s->zasoba += s->produkce;
 
@@ -129,19 +130,42 @@ bool spotrebuj(stat * s){
 	}
 }
 
+void revertSeason() {
+
+}
+
 void printTime(int timeHours) {
 	printf("Day: %d Hours: %d\n", timeHours/24, timeHours%24);
+	if(timeHours/24.0 == nextSeason) {
+		printf("Summer comes\n");
+		nextSeason += 182;
+		getchar();
+		revertSeason();
+	}
 }
 
 int main() {
 
-	stat staty[5];
+	sCountry staty[5];
 	sTransport transporty[2];
 	sTerminal terminaly[8];
 
     int position = 0;
     int positiontransportort = 0;
     int positionTerminal = 0;
+
+    int b;
+    scanf("%d",&b);
+    if(b == 1) {
+    	//
+		////  Rusko
+		insertTerminal(	terminaly, positionTerminal++, 	CZ, 	967);
+		insertTerminal(	terminaly, positionTerminal++, 	SK, 	629);
+		insertTerminal(	terminaly, positionTerminal++, 	PL, 	1097);
+		insertTerminal(	terminaly, positionTerminal++, 	HU, 	933);
+		insertTerminal(	terminaly, positionTerminal++, 	UA, 	2949);
+    }
+
 
 //	INSERT 			terminaly, position, 			dst, 	mnozstvi
 //  NEMECKO
@@ -150,14 +174,6 @@ int main() {
     insertTerminal(	terminaly, positionTerminal++, 	UA,		62);
 //  Norsko
     insertTerminal(	terminaly, positionTerminal++, 	CZ,		1);
-
-//
-////  Rusko
-	insertTerminal(	terminaly, positionTerminal++, 	CZ, 	967);
-	insertTerminal(	terminaly, positionTerminal++, 	SK, 	629);
-	insertTerminal(	terminaly, positionTerminal++, 	PL, 	1097);
-	insertTerminal(	terminaly, positionTerminal++, 	HU, 	933);
-	insertTerminal(	terminaly, positionTerminal++, 	UA, 	2949);
 
 
 //	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
@@ -179,7 +195,7 @@ int main() {
 
 		cout<< "---------------" <<endl;
 		printTime(i);
-		stat a;
+		sCountry a;
 
 		//tady vlozit z terminalu nebo ze zdroju
 
@@ -198,9 +214,8 @@ int main() {
 			}
 			cout << "stat:" << staty[j].jmeno << " stav:" << staty[j].zasoba << endl;
 			if(staty[j].zasoba == 0) {
-				int a;
 				staty[j].zasoba = 100000000; 
-				scanf("%d",&a);
+				getchar();
 			}
 
 		}
