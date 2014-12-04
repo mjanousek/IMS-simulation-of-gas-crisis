@@ -135,7 +135,7 @@ void transakceTerminal(sTerminal * terminal){
 	pom.dst = terminal->dst;
 	pom.mnozstvi = terminal->mnozstvi;
 	//pridat delku k transakci
-	pom.time = 0;
+	pom.time = 5;
 	transakce.push_back(pom);
 }
 
@@ -145,7 +145,7 @@ bool transakceTransport(sTransport * transport){
 		pom.dst = transport->dst;
 		pom.mnozstvi = transport->mnozstvi;
 		//pridat delku k transakci
-		pom.time = 0;
+		pom.time = 5;
 		transakce.push_back(pom);
 		return true;
 	}else{
@@ -172,6 +172,9 @@ void transakceCheck(){
 			sTransakce t = transakce.at(i);
 			transakceProved(t);
 			transakce.erase(transakce.begin()+i);
+		}else{
+//			cout<< transakce.at(i).time<< ", " ;
+			transakce.at(i).time-=1;
 		}
 	}
 }
@@ -324,7 +327,7 @@ int main() {
 
 
 	int i = 0;
-	while(i < 9*30*24){
+	while(i < 365*24){
 
 		cout<< "---------------" <<endl;
 		printTime(i);
