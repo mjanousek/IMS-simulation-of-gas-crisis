@@ -37,18 +37,20 @@ float nextSeason = 90.0;
 //rocni obdobi
 int RO = 1;
 //procenta Rusko
-float PR = 1.0;
+float PR = 1;
 
 typedef struct STerminal{
 //	int zasoba = 0;
 //	int maxVydej = 0;
 	long mnozstvi = 0;
+	int time = 0;
 	int dst;
 }sTerminal;
 
 typedef struct STransport{
 	int src;
 	int dst;
+	int time;
 	long mnozstvi;
 }sTransport;
 
@@ -95,19 +97,21 @@ void insertStat(int position, string jmeno, long sportrebaLeto, long sportrebaZi
 	staty[position] = pom;
 }
 
-void insertTransport(int position, int src, int dst, long mnozstvi){
+void insertTransport(int position, int src, int dst, long mnozstvi, int time){
 
 	sTransport pom;
 	pom.dst = dst;
 	pom.mnozstvi = mnozstvi;
+	pom.time = time;
 
 	transporty[position] = pom;
 }
 
-void insertTerminal(int position, int dst, long mnozstvi){
+void insertTerminal(int position, int dst, long mnozstvi, int time){
 
 	sTerminal pom;
 	pom.dst = dst;
+	pom.time = time;
 	pom.mnozstvi = mnozstvi;
 
 	terminaly[position] = pom;
@@ -135,7 +139,7 @@ void transakceTerminal(sTerminal * terminal){
 	pom.dst = terminal->dst;
 	pom.mnozstvi = terminal->mnozstvi;
 	//pridat delku k transakci
-	pom.time = 5;
+	pom.time = terminal->time;
 	transakce.push_back(pom);
 }
 
@@ -145,7 +149,7 @@ bool transakceTransport(sTransport * transport){
 		pom.dst = transport->dst;
 		pom.mnozstvi = transport->mnozstvi;
 		//pridat delku k transakci
-		pom.time = 5;
+		pom.time = transport->time;
 		transakce.push_back(pom);
 		return true;
 	}else{
@@ -213,8 +217,8 @@ void printTime(int timeHours) {
 	if(timeHours/24.0 >= nextSeason) {
 		printf("Summer comes\n");
 		nextSeason += 182;
-	    int b;
-	    scanf("%d",&b);
+//	    int b;
+//	    scanf("%d",&b);
 		revertSeason();
 	}
 }
@@ -237,37 +241,35 @@ void testOdpojeniRuska(){
 
 
 
-    int b;
-    scanf("%d",&b);
-    if(b == 1) {
-    	//
-		////  Rusko
-		insertTerminal(positionTerminal++, 	CZ, 	967);
-		insertTerminal(positionTerminal++, 	SK, 	629);
-		insertTerminal(positionTerminal++, 	PL, 	1097);
-		insertTerminal(positionTerminal++, 	HU, 	933);
-		insertTerminal(positionTerminal++, 	UA, 	2949);
-    }
 
+//	//
+//	////  Rusko: pos, dest, time
+//	insertTerminal(positionTerminal++, 	CZ, 	967*PR, 70);
+//	insertTerminal(positionTerminal++, 	SK, 	629*PR, 66);
+//	insertTerminal(positionTerminal++, 	PL, 	1097*PR, 42);
+//	insertTerminal(positionTerminal++, 	HU, 	933*PR, 60);
+//	insertTerminal(positionTerminal++, 	UA, 	2949*PR, 46);
 
-//	INSERT 			terminaly, position, 			dst, 	mnozstvi
-//  NEMECKO
-    insertTerminal(positionTerminal++, 	PL,		259);
+    //celkove
+
+//	INSERT 			terminaly, position, dst, 	mnozstvi, time
+//  Rusko pres NEMECKO
+    insertTerminal(positionTerminal++, 	PL,		259 * PR, 7);
 //  Kazachstan
-    insertTerminal(positionTerminal++, 	UA,		62);
+    insertTerminal(positionTerminal++, 	UA,		62, 37);
 //  Norsko
-    insertTerminal(positionTerminal++, 	CZ,		1);
+    insertTerminal(positionTerminal++, 	CZ,		1, 15);
 
 
-//	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
-    insertTransport(positiontransportort++, HU,		UA,		126);
-	insertTransport(positiontransportort++, CZ,		PL,		67);
+//	INSERT 			transporty, position, 	src, 	dst,  	mnozstvi, doba
+    insertTransport(positiontransportort++, HU,		UA,		126, 	11);
+	insertTransport(positiontransportort++, CZ,		PL,		67, 	7);
 
 
 	//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
 		insertStat(position++, "Cz", 	533, 		1186, 	3436000, 3436000, 29);			//0
 		insertStat(position++, "Sl", 	340, 		696, 	3020000, 3020000, 14);			//1
-		insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 2225000, 708);		//2
+		insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 2225000, 708);			//2
 		insertStat(position++, "Hu",	568, 		1331, 	6330000, 6330000, 223);			//3
 		insertStat(position++, "Ua", 	3238, 		8551, 	31950000, 31950000, 2288);		//4
 
@@ -279,55 +281,56 @@ void testOdpojeniRuska(){
 
 void testPripojeniUSA(){
 
-	PR = 0.6;
+	PR = 0.7;
 
-    position = 0;
-    positiontransportort = 0;
-    positionTerminal = 0;
-
-	////  Rusko
-	insertTerminal(positionTerminal++, 	CZ, 	967	* PR);
-	insertTerminal(positionTerminal++, 	SK, 	629	* PR);
-	insertTerminal(positionTerminal++, 	PL, 	1097* PR);
-	insertTerminal(positionTerminal++, 	HU, 	933	* PR);
-	insertTerminal(positionTerminal++, 	UA, 	2949* PR);
+	//
+	////  Rusko: pos, dest, time
+	insertTerminal(positionTerminal++, 	CZ, 	967*PR, 70);
+	insertTerminal(positionTerminal++, 	SK, 	629*PR, 66);
+	insertTerminal(positionTerminal++, 	PL, 	1097*PR, 42);
+	insertTerminal(positionTerminal++, 	HU, 	933*PR, 60);
+	insertTerminal(positionTerminal++, 	UA, 	2949*PR, 46);
 
 
-//	INSERT 			terminaly, position, 			dst, 	mnozstvi
-//  NEMECKO
-    insertTerminal(positionTerminal++, 	PL,		259);
+	//celkove
+
+//	INSERT 			terminaly, position, dst, 	mnozstvi, time
+//  Rusko pres NEMECKO
+	insertTerminal(positionTerminal++, PL, 259 * PR, 7);
 //  Kazachstan
-    insertTerminal(positionTerminal++, 	UA,		62);
+	insertTerminal(positionTerminal++, UA, 62, 37);
 //  Norsko
-    insertTerminal(positionTerminal++, 	CZ,		1);
+	insertTerminal(positionTerminal++, CZ, 1, 15);
 
-//  USA
-    insertTerminal(positionTerminal++, 	CZ,		1);
-    insertTerminal(positionTerminal++, 	CZ,		1);
-
-
-//	INSERT 			transporty, position, 				src, 	dst,  	mnozstvi
-    insertTransport(positiontransportort++, HU,		UA,		126);
-	insertTransport(positiontransportort++, CZ,		PL,		67);
-
+//	INSERT 			transporty, position, 	src, 	dst,  	mnozstvi, doba
+	insertTransport(positiontransportort++, HU, UA, 126, 11);
+	insertTransport(positiontransportort++, CZ, PL, 67, 7);
 
 //	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-	insertStat(position++, "Cz", 	533, 		1186, 	3436000, 2000000, 29);			//0
-	insertStat(position++, "Sl", 	340, 		696, 	3020000, 1500000, 14);			//1
-	insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 1000000, 708);		//2
-	insertStat(position++, "Hu",	568, 		1331, 	6330000, 2000000, 223);			//3
-	insertStat(position++, "Ua", 	3238, 		8551, 	3195000, 1000000, 2288);		//4
+	insertStat(position++, "Cz", 533, 1186, 3436000, 3436000, 29);			//0
+	insertStat(position++, "Sl", 340, 696, 3020000, 3020000, 14);			//1
+	insertStat(position++, "Pl", 1361, 1927, 2225000, 2225000, 708);		//2
+	insertStat(position++, "Hu", 568, 1331, 6330000, 6330000, 223);			//3
+	insertStat(position++, "Ua", 3238, 8551, 31950000, 31950000, 2288);		//4
 
 }
 
 
 int main() {
 
-	testOdpojeniRuska();
+	int b = 2;
+//    scanf("%d",&b);
+    if(b == 1) {
+    	testOdpojeniRuska();
+    }
+    if(b == 2) {
+    	testPripojeniUSA();
+	}
+
 
 
 	int i = 0;
-	while(i < 365*24){
+	while(i < 10*365*24){
 
 		cout<< "---------------" <<endl;
 		printTime(i);
@@ -351,7 +354,7 @@ int main() {
 			}
 			cout << "stat:" << staty[j].jmeno << " stav:" << staty[j].zasoba << endl;
 			if(staty[j].zasoba == 0) {
-				staty[j].zasoba = 100000000;
+				staty[j].zasoba = 0;
 			    int b;
 			    scanf("%d",&b);
 			}
