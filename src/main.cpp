@@ -207,10 +207,11 @@ void revertSeason() {
 
 void printTime(int timeHours) {
 	printf("Day: %d Hours: %d\n", timeHours/24, timeHours%24);
-	if(timeHours/24.0 == nextSeason) {
+	if(timeHours/24.0 >= nextSeason) {
 		printf("Summer comes\n");
 		nextSeason += 182;
-		getchar();
+	    int b;
+	    scanf("%d",&b);
 		revertSeason();
 	}
 }
@@ -260,12 +261,12 @@ void testOdpojeniRuska(){
 	insertTransport(positiontransportort++, CZ,		PL,		67);
 
 
-//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-	insertStat(position++, "Cz", 	270, 		600, 	3436000, 3436000, 29);			//0
-	insertStat(position++, "Sl", 	172, 		352, 	3020000, 3020000, 14);			//1
-	insertStat(position++, "Pl", 	688, 		974, 	2225000, 2225000, 708);		//2
-	insertStat(position++, "Hu",	287, 		673, 	6330000, 6330000, 223);			//3
-	insertStat(position++, "Ua", 	1637, 		4323, 	3195000, 3195000, 2288);		//4
+	//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
+		insertStat(position++, "Cz", 	533, 		1186, 	3436000, 3436000, 29);			//0
+		insertStat(position++, "Sl", 	340, 		696, 	3020000, 3020000, 14);			//1
+		insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 2225000, 708);		//2
+		insertStat(position++, "Hu",	568, 		1331, 	6330000, 6330000, 223);			//3
+		insertStat(position++, "Ua", 	3238, 		8551, 	31950000, 31950000, 2288);		//4
 
 }
 
@@ -308,11 +309,11 @@ void testPripojeniUSA(){
 
 
 //	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-	insertStat(position++, "Cz", 	270, 		600, 	3436000, 2000000, 29);			//0
-	insertStat(position++, "Sl", 	172, 		352, 	3020000, 1500000, 14);			//1
-	insertStat(position++, "Pl", 	688, 		974, 	2225000, 1000000, 708);		//2
-	insertStat(position++, "Hu",	287, 		673, 	6330000, 2000000, 223);			//3
-	insertStat(position++, "Ua", 	1637, 		4323, 	3195000, 1000000, 2288);		//4
+	insertStat(position++, "Cz", 	533, 		1186, 	3436000, 2000000, 29);			//0
+	insertStat(position++, "Sl", 	340, 		696, 	3020000, 1500000, 14);			//1
+	insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 1000000, 708);		//2
+	insertStat(position++, "Hu",	568, 		1331, 	6330000, 2000000, 223);			//3
+	insertStat(position++, "Ua", 	3238, 		8551, 	3195000, 1000000, 2288);		//4
 
 }
 
@@ -323,7 +324,7 @@ int main() {
 
 
 	int i = 0;
-	while(i < 365*24){
+	while(i < 9*30*24){
 
 		cout<< "---------------" <<endl;
 		printTime(i);
@@ -347,8 +348,9 @@ int main() {
 			}
 			cout << "stat:" << staty[j].jmeno << " stav:" << staty[j].zasoba << endl;
 			if(staty[j].zasoba == 0) {
-				staty[j].zasoba = 100000000; 
-				getchar();
+				staty[j].zasoba = 100000000;
+			    int b;
+			    scanf("%d",&b);
 			}
 
 		}
