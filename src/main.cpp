@@ -302,9 +302,21 @@ void testPripojeniUSA(){
 //  Norsko
 	insertTerminal(positionTerminal++, CZ, 1, 15);
 
+	//pridat terminaly/pristavy
+
+
+
+
+
+
 //	INSERT 			transporty, position, 	src, 	dst,  	mnozstvi, doba
 	insertTransport(positiontransportort++, HU, UA, 126, 11);
 	insertTransport(positiontransportort++, CZ, PL, 67, 7);
+
+	//pridat transporty mezi zememi
+
+
+
 
 //	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
 	insertStat(position++, "Cz", 533, 1186, 3436000, 3436000, 29);			//0
