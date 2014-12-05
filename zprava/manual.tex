@@ -45,27 +45,25 @@ na základě modelu a simulačních experimentů bude ukázáno chování systé
 smyslem experimentů je demonstrovat, že pokud by ..., pak by ...
 Poznámka: u vyžádaných zpráv se může uvést, že zpráva vznikla na základě požadavku ... (u školní práce takto zdůvod'novat projekt ovšem nelze, že). Je velmi praktické zdůvodnit, v čem je práce náročná a proto přínos autora nepopiratelný (např. pro zpracování modelu bylo nutno nastudovat ..., zpracovat, ... model je ve svém oboru zajímavý/ojedinělý v ...).
 
---------------
 
 \vline
 
 Tato práce popisuje řešení implementace diskrétního modelu produkce, spotřeby a přepravy plynu v zemích Česká republika, Polsko, Slovensko, Maďarsko a Ukrajina.
 
+Na základě vytvořeného modelu a simulačních experimentů bude ukázána závislost jednotlivých zemí na dovozu zemního plynu z Ruska, 
+užitečnost možného dovážení zkapalněného zemního plynu \textit{(LNG)} z USA a míra připravenosti výše zmiňovaných zemí na možnou plynou krizi.
 
-Na základě vytvořeného modelu a simulačních experimentů bude ukázána závislost jednotlivých zemí na dovozu zemního plynu z Ruska, \textbf{DALŠÍ SCÉNÁŘE}
 Smyslem experimentů je demonstrovat odolnost daných států vůči embargu na zemní plyn ze strany Ruska a jejich schopnost udržet normální běh státu v tomto stavu.
 
-\vline
 
---------------
-
+\subsection{Autoři a hlavní zdroje informací}
+\subsubsection{Autoři}
 Podkapitoly:
 kapitola 1.1: Kdo se na práci podílel jako autor, odborný konzultant, dodavatel odborných faktů, význačné zdroje literatury/fakt, ...
 je ideální, pokud jste vaši koncepci konzultovali s nějakou autoritou v oboru (v IMS projektu to je hodnoceno, ovšem není vyžadováno)
 pokud nebudete mít odborného konzultanta, nevadí. Nelze ovšem tvrdit, že jste celé dílo vymysleli s nulovou interakcí s okolím a literaturou.
 
-\subsection{Autoři a hlavní zdroje informací}
-\subsubsection{Autoři}
+
 \begin{itemize}
 \item Marek Fiala, xfiala46@stud.fit.vutbr.cz
 \item Martin Janoušek, xjanou14@stud.fit.vutbr.cz
@@ -77,8 +75,7 @@ který je každoročně vydáván \textit{Mezinárodní energetickou agenturou}\
 Tento elektronický sborník se zabívá požadavky a zásobami plynu v zemích po celém světě.
 
 
-Dalším důležitým zdrojem informací byl web asociace \textit{Gas Infrastructure Europe (GIE)}\footnote{viz. http://www.gie.eu.com/}.
-
+Dalším důležitým zdrojem informací byla webová stránka asociace \textit{Gas Infrastructure Europe (GIE)}\footnote{viz. http://www.gie.eu.com/}.
 
 \subsection{Validace modelu}
 
@@ -98,15 +95,65 @@ Zkoumejte dostupnost plynu v uzlech v různých obdobích roku (zimní spotřeba
 Ukrajina přeruší transportní cestu, Rusko přestane dodávat apod.).}
 \end{quotation}
 
+
 \section{Rozbor tématu a použitých metod/technologií}
 
 Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
 
+
+
+\subsection{Popis použitých metod a technologii}
+
 kapitola 2.1: Popis použitých postupů pro vytvoření modelu a zdůvodnění, proč jsou pro zadaný problém vhodné. Zdůvodnění může být podpořeno ukázáním alternativního přístupu a srovnáním s tím vaším. Čtenář musí mít jistotu, že zvolené nástroje/postupy/technologie jsou ideální pro řešení zadaného problému (ovšem, "dělám to v Javě, protože momentálně Java frčí..." nemusí zadavatele studie uspokojit).
+
+\vline
+
+Pro implementaci byl zvolen jazyk C++ a to ve variantě bez knihoven podporujících simulaci.
+Důvodem tohoto rozhodnutí byla rychlost spustitelného programu a také to,
+že veškeré události v modelu se vykonávají diskrétně v intervalech po jedné hodině.
+\textbf{Modelového času} pro účeli tohoto modelu lze tedy docílit jednoduše vykonáním všech
+událostí se stejným počátečním časem v jedné iteraci cyklu.
+
+
+\vline
 
 kapitola 2.2: Popis původu použitých metod/technologií (odkud byly získány (odkazy), zda-li jsou vytvořeny autorem) - převzaté části dokumentovat (specificky, pokud k nim přísluší nějaké autorské oprávnění/licence). Zdůvodnit potřebu vytvoření vlastních metod/nástrojů/algoritmů. Ve většině případů budete přebírat již navržené metody/algoritmy/definice/nástroje a je to pro školní projekt typické. Stejně tak je typické, že studenti chybně vymýšlí již hotové věci a dojdou k naprostému nesmyslu - je třeba toto nebezpečí eleminovat v tomto zdůvodnění.
 
 Velmi důležité, až fanaticky povinné, kontrolované a hodnocené: na každém místě v textu, kde se poprvé objeví pojem z předmětu IMS bude v závorce uveden odkaz na předmět a číslo slajdu, na kterém je pojem definován. Pokud bude významný pojem z předmětu IMS takto nedokumentován v textu a zjevně bude používán nevhodným nebo nepřesným způsobem, bude tento fakt hodnocen bodovou ztrátou. Tento požadavek je míněn s naprostou vážností. Cílem je vyhnout se studentské tvůrčí činnosti ve vysvětlování známých pojmů, což mnohdy vede k naprostým bludům, ztrátě bodů a zápočtů. Pokud student pojem cituje korektně a přesto nekorektně používá, bude to hodnoceno dvojnásobnou bodovou ztrátou.
+
+\subsection{Rozbor tématu}
+Práce je zacílena na produkci, spotřebu a přepravu zemního plynu v zemích okolo
+České republiky (Polsko, ČR, Slovensko, Maďarsko, Ukrajina) a proto bylo nejprve potřeba
+nalézt tyto hodnoty pro každou z těchto zemí (\ref{Zeme}),
+další stěžejní informací byla vzdálenost mezi jednotlivými zeměmi a také vlastnosti
+plynovodů (rychlost toku, délka, maximální propustnost...)
+mezi místem těžby zemního plynu a jednotlivými zeměmi (\ref{Preprava}).
+Poslení důležitou informací je umístění a kapacita vznikajícíh terminálů na LNG,
+které jsou v plánu v těchto zemích postavit případně, které by mohli danou zemi zásobovat
+(\ref{lng}).
+
+\subsubsection{Zemní plyn v jednotlivých zemích}\label{Zeme}
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|r|r|r|r|}
+    \hline
+    Stát 			& import 	& export & produkce & spotřeba \\
+    \hline 
+    Česká republika	& 8 479 		& 8 		& 252	& 8 477\\ 
+    Slovensko 		& 5 579		& 15		& 124	& 5 820\\
+    Maďarsko 		& 8 176		& 1 443	& 1 949	& 9 221\\
+    Polsko 			& 12 473 	& 94 	& 6 206	& 18 229\\
+    Ukrajina 		& 27 495 	& -		& 20 046 & 51 528 \\ \hline
+\end{tabular}
+\caption{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^6$.
+Zdroj \cite{IEA}}
+\label{tabulka1}
+\end{center}
+\end{table}
+
+\subsubsection{Přepravní trasy}\label{Preprava}
+
+\subsubsection{Terminály LNG}\label{lng}
 
 \section{Koncepce - modelářská témata}
 
