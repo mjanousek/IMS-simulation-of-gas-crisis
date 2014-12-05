@@ -103,6 +103,7 @@ void insertTransport(int position, int src, int dst, long mnozstvi, int time){
 	pom.dst = dst;
 	pom.mnozstvi = mnozstvi;
 	pom.time = time;
+	pom.src = src;
 
 	transporty[position] = pom;
 }
@@ -144,9 +145,9 @@ void transakceTerminal(sTerminal * terminal){
 }
 
 bool transakceTransport(sTransport * transport){
-	cout<<"transakceTransport"<<endl;
 	if(staty[transport->src].zasoba > transport->mnozstvi){
-		cout<<"transakceTransport1"<<endl;
+
+		staty[transport->src].zasoba -= transport->mnozstvi;
 		sTransakce pom;
 		pom.dst = transport->dst;
 		pom.mnozstvi = transport->mnozstvi;
@@ -155,7 +156,7 @@ bool transakceTransport(sTransport * transport){
 		transakce.push_back(pom);
 		return true;
 	}else{
-		cout<<"transakceTransport2"<<endl;
+//		cout<<"transakceTransport2"<<endl;
 		cout << staty[transport->src].jmeno << ":Nelze provest transport, v zasobniku je malo plynu.";
 		return false;
 	}
@@ -257,7 +258,7 @@ void testOdpojeniRuska(){
 
 //	INSERT 			terminaly, position, dst, 	mnozstvi, time
 //  Rusko pres NEMECKO
-    insertTerminal(positionTerminal++, 	PL,		259 * PR, 7);
+    insertTerminal(positionTerminal++, 	PL,		259, 7);
 //  Kazachstan
     insertTerminal(positionTerminal++, 	UA,		62, 37);
 //  Norsko
@@ -269,12 +270,12 @@ void testOdpojeniRuska(){
 	insertTransport(positiontransportort++, CZ,		PL,		67, 	7);
 
 
-	//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-		insertStat(position++, "Cz", 	533, 		1186, 	3436000, 3436000, 29);			//0
-		insertStat(position++, "Sl", 	340, 		696, 	3020000, 3020000, 14);			//1
-		insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 2225000, 708);			//2
-		insertStat(position++, "Hu",	568, 		1331, 	6330000, 6330000, 223);			//3
-		insertStat(position++, "Ua", 	3238, 		8551, 	31950000, 31950000, 2288);		//4
+//	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
+	insertStat(position++, "Cz", 	533, 		1186, 	3436000, 3436000, 29);			//0
+	insertStat(position++, "Sl", 	340, 		696, 	3020000, 3020000, 14);			//1
+	insertStat(position++, "Pl", 	1361, 		1927, 	2225000, 2225000, 708);			//2
+	insertStat(position++, "Hu",	568, 		1331, 	6330000, 6330000, 223);			//3
+	insertStat(position++, "Ua", 	3238, 		8551, 	31950000, 31950000, 2288);		//4
 
 }
 
@@ -306,12 +307,12 @@ void testPripojeniUSA(){
 	insertTerminal(positionTerminal++, CZ, 1, 15);
 
 	//pridat terminaly/pristavy
-//  Rusko pres Madarsko
-	insertTerminal(positionTerminal++, HU, 0, 5);
+//  chorvatsko
+	insertTerminal(positionTerminal++, HU, 230, 5);
 //  Polsko
-	insertTerminal(positionTerminal++, PL, 500, 37);
+	insertTerminal(positionTerminal++, PL, 600, 37);
 //  Ukrajina
-	insertTerminal(positionTerminal++, UA, 300, 15);
+	insertTerminal(positionTerminal++, UA, 1400, 15);
 
 
 
@@ -324,6 +325,8 @@ void testPripojeniUSA(){
 
 	//pridat transporty mezi zememi
 	insertTransport(positiontransportort++, PL, CZ, 300, 6);
+	insertTransport(positiontransportort++, UA, SK, 140, 12);
+//	insertTransport(positiontransportort++, CZ, SK, 10, 4);
 
 
 
@@ -379,6 +382,7 @@ int main() {
 				staty[j].zasoba = 0;
 			    int b;
 			    scanf("%d",&b);
+			    staty[j].zasoba = 99999999999999;
 			}
 
 		}
