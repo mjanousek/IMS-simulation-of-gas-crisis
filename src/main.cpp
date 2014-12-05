@@ -100,6 +100,7 @@ void insertStat(int position, string jmeno, long sportrebaLeto, long sportrebaZi
 void insertTransport(int position, int src, int dst, long mnozstvi, int time){
 
 	sTransport pom;
+	pom.src = src;
 	pom.dst = dst;
 	pom.mnozstvi = mnozstvi;
 	pom.time = time;
@@ -145,6 +146,9 @@ void transakceTerminal(sTerminal * terminal){
 
 bool transakceTransport(sTransport * transport){
 	cout<<"transakceTransport"<<endl;
+	printf("Zdroj %d\n",transport->src);
+	printf("Mnozstvni %ld\n",transport->mnozstvi);
+	printf("Zasoba %ld\n",staty[transport->src].zasoba);
 	if(staty[transport->src].zasoba > transport->mnozstvi){
 		cout<<"transakceTransport1"<<endl;
 		sTransakce pom;
@@ -339,7 +343,7 @@ void testPripojeniUSA(){
 
 int main() {
 
-	int b = 2;
+	int b = 1;
 //    scanf("%d",&b);
     if(b == 1) {
     	testOdpojeniRuska();
