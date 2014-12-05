@@ -76,9 +76,9 @@ vector<sTransakce> transakce;
 //zeme
 sCountry 	staty[5];
 //transporty
-sTransport 	transporty[2];
+sTransport 	transporty[3];
 //terminaly
-sTerminal 	terminaly[8];
+sTerminal 	terminaly[11];
 
 int position = 0;
 int positiontransportort = 0;
@@ -144,7 +144,9 @@ void transakceTerminal(sTerminal * terminal){
 }
 
 bool transakceTransport(sTransport * transport){
+	cout<<"transakceTransport"<<endl;
 	if(staty[transport->src].zasoba > transport->mnozstvi){
+		cout<<"transakceTransport1"<<endl;
 		sTransakce pom;
 		pom.dst = transport->dst;
 		pom.mnozstvi = transport->mnozstvi;
@@ -153,6 +155,7 @@ bool transakceTransport(sTransport * transport){
 		transakce.push_back(pom);
 		return true;
 	}else{
+		cout<<"transakceTransport2"<<endl;
 		cout << staty[transport->src].jmeno << ":Nelze provest transport, v zasobniku je malo plynu.";
 		return false;
 	}
@@ -303,7 +306,12 @@ void testPripojeniUSA(){
 	insertTerminal(positionTerminal++, CZ, 1, 15);
 
 	//pridat terminaly/pristavy
-
+//  Rusko pres Madarsko
+	insertTerminal(positionTerminal++, HU, 0, 5);
+//  Polsko
+	insertTerminal(positionTerminal++, PL, 500, 37);
+//  Ukrajina
+	insertTerminal(positionTerminal++, UA, 300, 15);
 
 
 
@@ -313,17 +321,18 @@ void testPripojeniUSA(){
 	insertTransport(positiontransportort++, HU, UA, 126, 11);
 	insertTransport(positiontransportort++, CZ, PL, 67, 7);
 
-	//pridat transporty mezi zememi
 
+	//pridat transporty mezi zememi
+	insertTransport(positiontransportort++, PL, CZ, 300, 6);
 
 
 
 //	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-	insertStat(position++, "Cz", 533, 1186, 3436000, 3436000, 29);			//0
-	insertStat(position++, "Sl", 340, 696, 3020000, 3020000, 14);			//1
-	insertStat(position++, "Pl", 1361, 1927, 2225000, 2225000, 708);		//2
-	insertStat(position++, "Hu", 568, 1331, 6330000, 6330000, 223);			//3
-	insertStat(position++, "Ua", 3238, 8551, 31950000, 31950000, 2288);		//4
+	insertStat(position++, "Cz", 533, 1186, 3436000, 1500000, 29);			//0
+	insertStat(position++, "Sl", 340, 696, 3020000, 1500000, 14);			//1
+	insertStat(position++, "Pl", 1361, 1927, 2225000, 1000000, 708);		//2
+	insertStat(position++, "Hu", 568, 1331, 6330000, 3000000, 223);			//3
+	insertStat(position++, "Ua", 3238, 8551, 31950000, 15000000, 2288);		//4
 
 }
 
@@ -350,6 +359,7 @@ int main() {
 
 		//tady vlozit z terminalu nebo ze zdroju
 
+
 		for (int l = 0; l < positionTerminal; l++) {
 //			if(!importFromTerminal(&terminaly[l])){
 //				cout << "Full zasobnik" <<endl;
@@ -373,16 +383,16 @@ int main() {
 
 		}
 
-
+		cout<<"transporty"<<endl;
 		for (int k = 0; k < positiontransportort; k++) {
 //			if(!transportuj(&transporty[k])){
-//				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
+				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
 //			}
 			transakceTransport(&transporty[k]);
 
 		}
 
-
+		cout<<"transakceCheck"<<endl;
 		transakceCheck();
 
 
