@@ -124,18 +124,19 @@ Velmi důležité, až fanaticky povinné, kontrolované a hodnocené: na každ�
 \subsection{Rozbor tématu}
 Práce je zacílena na produkci, spotřebu a přepravu zemního plynu v zemích okolo
 České republiky (Polsko, ČR, Slovensko, Maďarsko, Ukrajina) a proto bylo nejprve potřeba
-nalézt tyto hodnoty pro každou z těchto zemí (\ref{Zeme}),
-další stěžejní informací byla vzdálenost mezi jednotlivými zeměmi a také vlastnosti
+nalézt tyto hodnoty pro každou z těchto zemí (\ref{Zeme}). 
+Důležitou informací byly rovněž kapacity zásobníků v jednotlivích zemích (\ref{zasobniky}).
+Další stěžejní informací byla vzdálenost mezi jednotlivými zeměmi a také vlastnosti
 plynovodů (rychlost toku, délka, maximální propustnost...)
 mezi místem těžby zemního plynu a jednotlivými zeměmi (\ref{Preprava}).
 Poslení důležitou informací je umístění a kapacita vznikajícíh terminálů na LNG,
 které jsou v plánu v těchto zemích postavit případně, které by mohli danou zemi zásobovat
 (\ref{lng}).
 
-\subsubsection{Zemní plyn v jednotlivých zemích}\label{Zeme}
+\subsubsection{Import, export, produkce a spotřeba}\label{Zeme}
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|r|r|r|r|}
+\begin{tabular}{|l|r|r|r|r|}
     \hline
     Stát 			& import 	& export & produkce & spotřeba \\
     \hline 
@@ -145,16 +146,134 @@ které jsou v plánu v těchto zemích postavit případně, které by mohli dan
     Polsko 			& 12 473 	& 94 	& 6 206	& 18 229\\
     Ukrajina 		& 27 495 	& -		& 20 046 & 51 528 \\ \hline
 \end{tabular}
-\caption{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^6$.
+\caption{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^6$ za jeden rok.
 Zdroj \cite{IEA}}
 \label{tabulka1}
 \end{center}
 \end{table}
 
+Tyto hodnoty nebyly vhodné do modelu jelikož nedpovídali
+zvolenému modelovému času jedna hodina. 
+Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepravené na hodiny. 
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|}
+    \hline
+    Stát 			& import 	& export & produkce & spotřeba \\
+    \hline 
+    Česká republika	& 968 		& 1 		& 29		& 968\\ 
+    Slovensko 		& 637		& 2		& 14		& 664\\
+    Maďarsko 		& 933		& 165	& 222	& 1 053\\
+    Polsko 			& 1 424		& 11		& 708	& 2 081\\
+    Ukrajina 		& 3 139	 	& -		& 2288	& 5 882 \\ \hline
+\end{tabular}
+\caption[LOL]{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^3$ za hodinu\footnotemark}
+\label{tabulka2}
+\end{center}
+\end{table}
+\footnotetext{Převod z hodnot uvedených v  tabulce výše tabulce.
+Převod: původní hodnota/365/24.}
+
+Po tomto kroku byly téměř všechny hodnoty připraveny na vložení do modelu.
+Poslední hodnotou, kterou bylo potřeba modifikovat byla spotřeba a to tak
+aby odpovídala spotřebě za letní a za zimní období.
+Vzhledem ke skutečnosti, že se v primárním zdroji informací tyto hodnoty nenacházely
+a z jiného zdroje přesně neodpovídaly nalezeným hodnotám z primátnáho zdroje
+(viz tabulka \ref{tabulka1}),
+byl poměr zimní a letní spotřeby získán z mapy \cite{Mapka staty} a posléze aplikován
+na hodnoty v tabulce \ref{tabulka1}.
+
+Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v tabulce
+\ref{tabulka3}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|}
+    \hline
+    Stát 			& spotřeba & získaný poměr & spotřeba  & spotřeba \\
+    & celý rok && duben-září & říjen-březen\\
+    \hline 
+    Česká republika	& 968	& 0.2858   	& 553	& 1382\\ 
+    Slovensko 		& 664	& 0.2903		& 385	& 942\\
+    Maďarsko 		& 1 053	& 0.2747		& 578	& 1526\\
+    Polsko 			& 2 081	& 0.3935		& 1637	& 2524\\
+    Ukrajina 		& 5 882	& 0.2745		& 3229	& 8535\\
+    \hline
+\end{tabular}
+\caption[LOL]{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^3$ za hodinu}
+\label{tabulka3}
+\end{center}
+\end{table} 
+
+\subsubsection{Zásobníky zemního plynu}\label{zasobniky}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|r|}
+    \hline
+    Stát 			& celková kapacita zásobníků\\
+    \hline 
+    Česká republika	& 3 497\\ 
+    Slovensko 		& 3 155\\
+    Maďarsko 		& 6 330\\
+    Polsko 			& 2 474\\
+    Ukrajina 		& 31 950\\
+    \hline
+\end{tabular}
+\caption[LOL]{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^6$}
+\label{tabulka4}
+\end{center}
+\end{table}
+
+Hodnoty jsou opět získáný z \cite{IEA}, rovněž zajímavým zdrojem je stránka \url{http://transparency.gie.eu/}
+kde jsou každý den aktualizovány statistiky zásobníků (zaplnění, odběr, kapacita,...)
 \subsubsection{Přepravní trasy}\label{Preprava}
 
-\subsubsection{Terminály LNG}\label{lng}
+DOPSAT VZDALENOSTI
 
+Jako rychlost zemního plynu byla zvolena hodnota 20 m/s získaná ze zdroje
+\cite{engineering}.
+Tato hodnota je v uvedeném zdroji označena jako doporučená 
+proto, že se jedná o nejvyšší rychlost toku zemního plynu,
+která nezvyšuje riziko koroze na  potrubí v němž je zemní plyn přepravován.
+V modelu je tato rychlost převedena na km/h, tedy na \textbf{72 km/h}, a je použita pro
+odhadované zpoždení plynu z místa těžby na místa spotřeby.
+
+DOPSAT ZPOZDENI
+
+\subsubsection{Lodní terminály na LNG}\label{lng}
+
+Jedním z důvodů vzniku celé této práce je simulace možnosti převozu zkapalněného zemního
+plynu do Evropy z USA.
+Za tímto účelem bylo třeba nalézt plánované lodní terminály, které  by byly vhodné pro
+přepravu \textit{LNG} do zemí zkoumaných v těchto experimentech
+(Polsko, ČR, Slovensko, Maďarsko, Ukrajina).
+
+Kritéria pro výběr nejvhodnějších lodní terminály byla existence potrubní sítě s
+dostačující přepravní kapacitou, dále také vzdálenost od místa spotřeby a v neposlední
+řadě také plánovaný roční odběr.
+
+Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce 
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|r|r|r|}
+    \hline
+    Stát		& Místo			& Kapacita 		& Očekávaná kapacita ročního odběru & rok dokončení\\
+    \hline 
+	Polsko		& Swinouscije	& 320 000 $m^3$	& 7,5 $m^3 * 10^9$	& 2014\\
+	Chorvatsko 	& Krk			& 250,000 $m^3$	& 10 $m^3 * 10^9$	& 2017\\
+	Ukrajina		& Odessa			& 540 000 $m^3$	& 10 $m^3 * 10^9$	& 2018\\
+    \hline
+\end{tabular}
+\caption{Veškeré hodnoty jsou uvedeny v jednotkách }
+\label{tabulka4}
+\end{center}
+\end{table}
+
+Zdroje http://www.hydrocarbons-technology.com/projects/ukraine-lng-terminal/
+http://www.adria-lng.hr/
 \section{Koncepce - modelářská témata}
 
 Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
@@ -198,9 +317,8 @@ do závěru se velmi nehodí psát "auto-zhodnocení" kvality práce, to je výh
 \begin{thebibliography}{99}
 \bibitem{IEA} IEA natural gas information [online]. [cit. 2014-12-03]. ISBN 1683-4267. Dostupné z: http://www.oecd-ilibrary.org/energy/natural-gas-information{\_}16834267
 \bibitem{GIE} Gas Infrastructure Europe [online]. [cit. 2014-12-03]. Dostupné z: http://www.gie.eu.com/
-\bibitem{wiki} Hypertext Transfer Protocol [online]. 2014 [cit. 2014-11-22].
-Dostupné z: http://cs.wikipedia.org/wiki/Hypertext{\_}Transfer{\_}Protocol
-\bibitem{pozadavky} Požadavky protokolu HTTP a jejich zpracování v PHP [online]. 2014 [cit. 2014-11-22].
+\bibitem{Mapka staty} http://www.gie.eu.com/download/maps/ENTSOG-GIE{\_}SYSDEV{\_}MAP2013.pdf
+\bibitem{engineering} Natural gas engineering and safety challenges. pages cm. ISBN 978-331-9089-478.
 Dostupné z: http://interval.cz/clanky/pozadavky-protokolu-http-a-jejich-zpracovani-v-php/
 \end{thebibliography}
 \end{document}
