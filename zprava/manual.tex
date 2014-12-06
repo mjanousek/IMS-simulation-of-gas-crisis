@@ -3,6 +3,7 @@
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphics}
+\usepackage{caption}
 \usepackage[hidelinks]{hyperref}
 %velikost stránky
 \usepackage[left=1.5cm,text={18cm, 25cm},top=2.5cm]{geometry}
@@ -54,6 +55,8 @@ Na základě vytvořeného modelu a simulačních experimentů bude ukázána z�
 užitečnost možného dovážení zkapalněného zemního plynu \textit{(LNG)} z USA a míra připravenosti výše zmiňovaných zemí na možnou plynou krizi.
 
 Smyslem experimentů je demonstrovat odolnost daných států vůči embargu na zemní plyn ze strany Ruska a jejich schopnost udržet normální běh státu v tomto stavu.
+Dalším smyslem je hledání nového zdroje zemního plynu, kterým by se zmírnila závislost
+na zemním plynu dováženém z Ruska.
 
 
 \subsection{Autoři a hlavní zdroje informací}
@@ -130,7 +133,7 @@ Další stěžejní informací byla vzdálenost mezi jednotlivými zeměmi a tak
 plynovodů (rychlost toku, délka, maximální propustnost...)
 mezi místem těžby zemního plynu a jednotlivými zeměmi (\ref{Preprava}).
 Poslení důležitou informací je umístění a kapacita vznikajícíh terminálů na LNG,
-které jsou v plánu v těchto zemích postavit případně, které by mohli danou zemi zásobovat
+které jsou v plánu v těchto zemích postavit případně, které by mohli některou z daných zemí zásobovat
 (\ref{lng}).
 
 \subsubsection{Import, export, produkce a spotřeba}\label{Zeme}
@@ -146,15 +149,16 @@ které jsou v plánu v těchto zemích postavit případně, které by mohli dan
     Polsko 			& 12 473 	& 94 	& 6 206	& 18 229\\
     Ukrajina 		& 27 495 	& -		& 20 046 & 51 528 \\ \hline
 \end{tabular}
-\caption{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^6$ za jeden rok.
-Zdroj \cite{IEA}}
-\label{tabulka1}
+\caption{Import, export produkce a spotřeba jednotlivých zkoumaných zemí za jeden rok.}
+Jednotky mcm ($m^3 * 10^6$).  Zdroj \cite{IEA}
+\label{rocni}
 \end{center}
 \end{table}
 
 Tyto hodnoty nebyly vhodné do modelu jelikož nedpovídali
 zvolenému modelovému času jedna hodina. 
-Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepravené na hodiny. 
+Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepravené na hodiny.
+Přepočítané hodnoty viz tabulka \ref{tabulka2}. 
 
 \begin{table}[h!]
 \begin{center}
@@ -168,7 +172,9 @@ Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepra
     Polsko 			& 1 424		& 11		& 708	& 2 081\\
     Ukrajina 		& 3 139	 	& -		& 2288	& 5 882 \\ \hline
 \end{tabular}
-\caption[LOL]{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^3$ za hodinu\footnotemark}
+\caption{Import, export produkce a spotřeba jednotlivých zkoumaných zemí za jednu hodinu.}
+
+Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$)\footnotemark.
 \label{tabulka2}
 \end{center}
 \end{table}
@@ -180,19 +186,18 @@ Poslední hodnotou, kterou bylo potřeba modifikovat byla spotřeba a to tak
 aby odpovídala spotřebě za letní a za zimní období.
 Vzhledem ke skutečnosti, že se v primárním zdroji informací tyto hodnoty nenacházely
 a z jiného zdroje přesně neodpovídaly nalezeným hodnotám z primátnáho zdroje
-(viz tabulka \ref{tabulka1}),
-byl poměr zimní a letní spotřeby získán z mapy \cite{Mapka staty} a posléze aplikován
-na hodnoty v tabulce \ref{tabulka1}.
+(viz tabulka \ref{rocni}),
+byl poměr zimní a letní spotřeby získán z hodnot vypsaných v mapě \cite{Mapka staty} a posléze aplikován na hodnoty v tabulce \ref{rocni}.
 
 Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v tabulce
-\ref{tabulka3}.
+\ref{spotreba}.
 
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& spotřeba & získaný poměr & spotřeba  & spotřeba \\
-    & celý rok && duben-září & říjen-březen\\
+    Stát 			& spotřeba 	& získaný poměr & spotřeba  & spotřeba \\
+    & celý rok 		&			& duben-září 	& říjen-březen\\
     \hline 
     Česká republika	& 968	& 0.2858   	& 553	& 1382\\ 
     Slovensko 		& 664	& 0.2903		& 385	& 942\\
@@ -201,8 +206,9 @@ Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v ta
     Ukrajina 		& 5 882	& 0.2745		& 3229	& 8535\\
     \hline
 \end{tabular}
-\caption[LOL]{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^3$ za hodinu}
-\label{tabulka3}
+\caption{Průměrná spotřeba jednotlivých zemí za jeden rok, za letní a zimní období za rok.}
+Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$).
+\label{spotreba}
 \end{center}
 \end{table} 
 
@@ -210,7 +216,7 @@ Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v ta
 
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|r|}
+\begin{tabular}{|l|r|}
     \hline
     Stát 			& celková kapacita zásobníků\\
     \hline 
@@ -221,8 +227,9 @@ Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v ta
     Ukrajina 		& 31 950\\
     \hline
 \end{tabular}
-\caption[LOL]{Veškeré hodnoty jsou uvedeny v jednotkách $m^3 * 10^6$}
-\label{tabulka4}
+\caption{Maximální kapacity zásobníků v jednotlivých zemích} 
+Veškeré hodnoty jsou uvedeny v jednotkách mcm ($m^3 * 10^6$)
+\label{zasobniky}
 \end{center}
 \end{table}
 
@@ -250,7 +257,7 @@ Za tímto účelem bylo třeba nalézt plánované lodní terminály, které  by
 přepravu \textit{LNG} do zemí zkoumaných v těchto experimentech
 (Polsko, ČR, Slovensko, Maďarsko, Ukrajina).
 
-Kritéria pro výběr nejvhodnějších lodní terminály byla existence potrubní sítě s
+Kritéria pro výběr nejvhodnějších lodních terminálů byla existence potrubní sítě s
 dostačující přepravní kapacitou, dále také vzdálenost od místa spotřeby a v neposlední
 řadě také plánovaný roční odběr.
 
@@ -258,17 +265,18 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce
 
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|c|r|r|r|}
+\begin{tabular}{|l|l|r|r|r|}
     \hline
-    Stát		& Místo			& Kapacita 		& Očekávaná kapacita ročního odběru & rok dokončení\\
+    Stát		& Místo			& Kapacita 		& Očekávaná kapacita  & rok dokončení\\
+    			&				&				& ročního odběru		&\\
     \hline 
 	Polsko		& Swinouscije	& 320 000 $m^3$	& 7,5 $m^3 * 10^9$	& 2014\\
 	Chorvatsko 	& Krk			& 250,000 $m^3$	& 10 $m^3 * 10^9$	& 2017\\
 	Ukrajina		& Odessa			& 540 000 $m^3$	& 10 $m^3 * 10^9$	& 2018\\
     \hline
 \end{tabular}
-\caption{Veškeré hodnoty jsou uvedeny v jednotkách }
-\label{tabulka4}
+\caption{Terminály LNG, které nejlépe odpovídají kritériům. Zdroje}
+\label{lng}
 \end{center}
 \end{table}
 
