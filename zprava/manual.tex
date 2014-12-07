@@ -98,6 +98,7 @@ Zkoumejte dostupnost plynu v uzlech v různých obdobích roku (zimní spotřeba
 Ukrajina přeruší transportní cestu, Rusko přestane dodávat apod.).}
 \end{quotation}
 
+\subsection{Zkoumané scénáře}
 
 \section{Rozbor tématu a použitých metod/technologií}
 
@@ -120,11 +121,23 @@ událostí se stejným počátečním časem v jedné iteraci cyklu.
 
 \vline
 
+\subsection{Popis původu použitých metod/technologií}
 kapitola 2.2: Popis původu použitých metod/technologií (odkud byly získány (odkazy), zda-li jsou vytvořeny autorem) - převzaté části dokumentovat (specificky, pokud k nim přísluší nějaké autorské oprávnění/licence). Zdůvodnit potřebu vytvoření vlastních metod/nástrojů/algoritmů. Ve většině případů budete přebírat již navržené metody/algoritmy/definice/nástroje a je to pro školní projekt typické. Stejně tak je typické, že studenti chybně vymýšlí již hotové věci a dojdou k naprostému nesmyslu - je třeba toto nebezpečí eleminovat v tomto zdůvodnění.
 
 Velmi důležité, až fanaticky povinné, kontrolované a hodnocené: na každém místě v textu, kde se poprvé objeví pojem z předmětu IMS bude v závorce uveden odkaz na předmět a číslo slajdu, na kterém je pojem definován. Pokud bude významný pojem z předmětu IMS takto nedokumentován v textu a zjevně bude používán nevhodným nebo nepřesným způsobem, bude tento fakt hodnocen bodovou ztrátou. Tento požadavek je míněn s naprostou vážností. Cílem je vyhnout se studentské tvůrčí činnosti ve vysvětlování známých pojmů, což mnohdy vede k naprostým bludům, ztrátě bodů a zápočtů. Pokud student pojem cituje korektně a přesto nekorektně používá, bude to hodnoceno dvojnásobnou bodovou ztrátou.
 
 \subsection{Rozbor tématu}
+
+Zemní plyn je přírodní hořlavý plyn využívaný jako významné fosilní palivo.
+Pro přepravu se používá potrubí (kratší vzdálenosti) a nebo je 
+přepravován loděmi přes moře (velké vzdálenosti).
+
+Pro přeprepravu přes moře je plyn převeden do formy CNG (stlačený zemní plyn) nebo
+LNG (zkapalněný zemní plyn) tímto je docíleno zmenšení objemu zemního plynu \footnote{V případě LNG cca 600x}. V cílovém terminálu přečerpán do zásobníků, postupně je plyn odpařován a dodáván do plynovodního systému.
+
+
+\vline
+
 Práce je zacílena na produkci, spotřebu a přepravu zemního plynu v zemích okolo
 České republiky (Polsko, ČR, Slovensko, Maďarsko, Ukrajina) a proto bylo nejprve potřeba
 nalézt tyto hodnoty pro každou z těchto zemí (\ref{Zeme}). 
@@ -133,8 +146,10 @@ Další stěžejní informací byla vzdálenost mezi jednotlivými zeměmi a tak
 plynovodů (rychlost toku, délka, maximální propustnost...)
 mezi místem těžby zemního plynu a jednotlivými zeměmi (\ref{Preprava}).
 Poslení důležitou informací je umístění a kapacita vznikajícíh terminálů na LNG,
-které jsou v plánu v těchto zemích postavit případně, které by mohli některou z daných zemí zásobovat
-(\ref{lng}).
+které jsou v plánu v těchto zemích postavit případně, které by mohli některou z
+daných zemí zásobovat (\ref{lng}).
+
+
 
 \subsubsection{Import, export, produkce a spotřeba}\label{Zeme}
 \begin{table}[h!]
@@ -185,7 +200,7 @@ Po tomto kroku byly téměř všechny hodnoty připraveny na vložení do modelu
 Poslední hodnotou, kterou bylo potřeba modifikovat byla spotřeba a to tak
 aby odpovídala spotřebě za letní a za zimní období.
 Vzhledem ke skutečnosti, že se v primárním zdroji informací tyto hodnoty nenacházely
-a z jiného zdroje přesně neodpovídaly nalezeným hodnotám z primátnáho zdroje
+a z jiného zdroje přesně neodpovídaly nalezeným hodnotám z primárního zdroje
 (viz tabulka \ref{rocni}),
 byl poměr zimní a letní spotřeby získán z hodnot vypsaných v mapě \cite{Mapka staty} a posléze aplikován na hodnoty v tabulce \ref{rocni}.
 
@@ -199,11 +214,11 @@ Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v ta
     Stát 			& spotřeba 	& získaný poměr & spotřeba  & spotřeba \\
     & celý rok 		&			& duben-září 	& říjen-březen\\
     \hline 
-    Česká republika	& 968	& 0.2858   	& 553	& 1382\\ 
-    Slovensko 		& 664	& 0.2903		& 385	& 942\\
-    Maďarsko 		& 1 053	& 0.2747		& 578	& 1526\\
-    Polsko 			& 2 081	& 0.3935		& 1637	& 2524\\
-    Ukrajina 		& 5 882	& 0.2745		& 3229	& 8535\\
+    Česká republika	& 968	& 28,6 \%   	& 553	& 1382\\ 
+    Slovensko 		& 664	& 29,0 \%	& 385	& 942\\
+    Maďarsko 		& 1 053	& 27,5 \% 	& 578	& 1526\\
+    Polsko 			& 2 081	& 39,4 \%	& 1637	& 2524\\
+    Ukrajina 		& 5 882	& 27,5 \%	& 3229	& 8535\\
     \hline
 \end{tabular}
 \caption{Průměrná spotřeba jednotlivých zemí za jeden rok, za letní a zimní období za rok.}
@@ -227,9 +242,9 @@ Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$).
     Ukrajina 		& 31 950\\
     \hline
 \end{tabular}
-\caption{Maximální kapacity zásobníků v jednotlivých zemích} 
-Veškeré hodnoty jsou uvedeny v jednotkách mcm ($m^3 * 10^6$)
-\label{zasobniky}
+\caption{Maximální kapacity zásobníků v jednotlivých zemích.} 
+Veškeré hodnoty jsou uvedeny v jednotkách mcm ($m^3 * 10^6$).
+\label{zasobnikytable}
 \end{center}
 \end{table}
 
@@ -237,9 +252,57 @@ Hodnoty jsou opět získáný z \cite{IEA}, rovněž zajímavým zdrojem je str�
 kde jsou každý den aktualizovány statistiky zásobníků (zaplnění, odběr, kapacita,...)
 \subsubsection{Přepravní trasy}\label{Preprava}
 
-DOPSAT VZDALENOSTI
+Jako přepravní síť plynu z místa těžby do místa spotřeby byly zvoleny existující plynovody,
+které jsou vypsány v tabulce \ref{plynovody}.
+Vzhledem k abstrakci jednotlivých států na jeden uzel produkce a spotřeby
+a neuvažování místních rozvodů plynu
+byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států (viz tabulka \ref{staty}).
 
-Jako rychlost zemního plynu byla zvolena hodnota 20 m/s získaná ze zdroje
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|l|l|r|}
+    \hline
+    Název 			& Začátek (místo těžby)	& Konec (cílové státy) 		& Vzdálenost\\
+    \hline 
+    Jamal			& poloostrov Jamal, Rusko	& Polsko				& 3177 km\\ 
+    North stream\footnotemark 	& poloostrov Jamal, Rusko & Německo	& 4341 km\\
+    Europipe I. 		& Severní moře, Norsko 		& Německo  			& 642 km\\
+    Soyuz 			& poloostrov Jamal, Rusko 	& Ukrajina 			& 3640 km\\
+					&							& Slovensko			& 4500 km\\ 
+    \hline
+\end{tabular}
+\caption{Délka uvažovaných plynovodů.} 
+\label{plynovody}
+\end{center}
+\end{table}
+
+\footnotetext{Název North stream je označení pouze pro plynovod vedoucí po dně
+Baltského moře jehož délka je 1 224 km, ale pro účely práce bylo vhodnější k délce 
+North streamu přičíst délkou plynovodu vedoucího do místa těžby.}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|r|}
+    \hline
+    Stát 			& Česko		& Slovensko 		& Maďarsko	& Polsko & Ukrajina\\
+    \hline 
+    Česko			& 0		& 290 km		& 445	& 520    & 1150\\ 
+    Slovensko 		& 290	& 0			& 160	& 540    & 1010\\
+    Maďarsko 		& 445	& 160		& 0		& 545 	 & 900\\
+    Polsko 			& 520	& 540		& 545 	& 0		 & 695\\
+	Ukrajina			& 1150	& 1010		& 900	& 695	 & 0	\\
+    \hline
+\end{tabular}
+\caption{Vzdálenosti hlavních měst států.} 
+Veškeré hodnoty jsou uvedeny v jednotkách km.\\
+Hodnoty změřené za pomoci webové stránky \textit{Mapy.cz}\footnotemark
+\label{staty}
+\end{center}
+\end{table}
+
+\footnotetext{http://www.mapy.cz/}
+
+Přepravní rychlost zemního plynu byla zvolena hodnota 20 m/s získaná ze zdroje
 \cite{engineering}.
 Tato hodnota je v uvedeném zdroji označena jako doporučená 
 proto, že se jedná o nejvyšší rychlost toku zemního plynu,
@@ -247,7 +310,51 @@ která nezvyšuje riziko koroze na  potrubí v němž je zemní plyn přepravov�
 V modelu je tato rychlost převedena na km/h, tedy na \textbf{72 km/h}, a je použita pro
 odhadované zpoždení plynu z místa těžby na místa spotřeby.
 
-DOPSAT ZPOZDENI
+Hodnoty získané kombinací hodnot z tabulky \ref{plynovody} a výše zmiňované
+doporučené rychlosti 72 km/h lze získat přepravní čas zemního plynu pro jednotlivé
+plynovody(viz tabulka \ref{plynovodyprevod}).
+
+Obdobně lze zíkat přepravní čas mezi uzly reprezentujícími jednotlivé země.
+V tomto případě jsou použity hodnoty z tabulky \ref{staty}. 
+Výsledné hodnoty jsou vypsány v tabulce  \ref{statyprevod}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|l|l|r|}
+    \hline
+    Název 			& Začátek (místo těžby)	& Konec (cílové státy) 		& Doba přepravy \\
+    \hline 
+    Yamal			& SZ Ruska				& Polsko				& 47 hodin\\ 
+    North stream 	& SZ Ruska				& Německo			& 60 hodin\\
+    Europipe I. 		& Severní moře, Norsko 	& Německo  			& 9 hodin\\
+    Soyuz 			& SZ Ruska				& Ukrajina 			& 51 hodin\\
+					&						& Slovensko			& 74 hodin\\ 
+    \hline
+\end{tabular}
+\caption{Čas potřebný k překonání uvažovaných plynovodů} 
+\label{plynovodyprevod}
+\end{center}
+\end{table}
+
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|r|}
+    \hline
+    Stát 			& Česko		& Slovensko 		& Maďarsko	& Polsko & Ukrajina\\
+    \hline 
+    Česko			& 0 			& 4 				& 6			& 7		 & 16\\ 
+    Slovensko 		& 4			& 0				& 2			& 8		 & 14\\
+    Maďarsko 		& 6			& 2				& 0			& 8		 & 13\\
+    Polsko 			& 7			& 8				& 8		 	& 0		 & 10\\
+	Ukrajina			& 16			& 14				& 13			& 10		 & 0\\
+    \hline
+\end{tabular}
+\caption{Čas potřebný k překonání Vzdálenosti hlavních měst států.}
+Veškeré hodnoty jsou uvedeny v jednotkách hodina.
+\label{statyprevod}
+\end{center}
+\end{table}
 
 \subsubsection{Lodní terminály na LNG}\label{lng}
 
@@ -267,7 +374,7 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce
 \begin{center}
 \begin{tabular}{|l|l|r|r|r|}
     \hline
-    Stát		& Místo			& Kapacita 		& Očekávaná kapacita  & rok dokončení\\
+    Stát		& Místo			& Kapacita 		& Očekávaná kapacita  & Rok dokončení\\
     			&				&				& ročního odběru		&\\
     \hline 
 	Polsko		& Swinouscije	& 320 000 $m^3$	& 7,5 $m^3 * 10^9$	& 2014\\
@@ -275,8 +382,8 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce
 	Ukrajina		& Odessa			& 540 000 $m^3$	& 10 $m^3 * 10^9$	& 2018\\
     \hline
 \end{tabular}
-\caption{Terminály LNG, které nejlépe odpovídají kritériům. Zdroje}
-\label{lng}
+\caption{Terminály LNG, které nejlépe odpovídají kritériům. Zdroje \cite{lngeurope},\cite{lngkrk} a  \cite{lngukrajina}}
+\label{lngtable}
 \end{center}
 \end{table}
 
@@ -285,7 +392,9 @@ http://www.adria-lng.hr/
 \section{Koncepce - modelářská témata}
 
 Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
+\subsubsection{Způsob vyjádření konceptuálního modelu}
 kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
+\subsubsection{Formy konceptuálního modelu}
 kapitola 3.2: Formy konceptuálního modelu (důraz je kladen na srozumitelnost sdělení). Podle potřeby uveďte konkrétní relevantní:
 obrázek/náčrt/schéma/mapa (možno čitelně rukou)
 matematické rovnice - u některých témat (např. se spojitými prvky, optimalizace, ...) naprosto nezbytné. Dobré je chápat, že veličiny (fyzikální, technické, ekonomické) mají jednotky, bez kterých údaj nedává smysl.
@@ -321,12 +430,15 @@ do závěru se velmi nehodí psát "auto-zhodnocení" kvality práce, to je výh
 
 
 \newpage
-\renewcommand{\refname}{Literatura}
+\renewcommand{\refname}{Literatura a použité zdroje}
 \begin{thebibliography}{99}
 \bibitem{IEA} IEA natural gas information [online]. [cit. 2014-12-03]. ISBN 1683-4267. Dostupné z: http://www.oecd-ilibrary.org/energy/natural-gas-information{\_}16834267
 \bibitem{GIE} Gas Infrastructure Europe [online]. [cit. 2014-12-03]. Dostupné z: http://www.gie.eu.com/
 \bibitem{Mapka staty} http://www.gie.eu.com/download/maps/ENTSOG-GIE{\_}SYSDEV{\_}MAP2013.pdf
 \bibitem{engineering} Natural gas engineering and safety challenges. pages cm. ISBN 978-331-9089-478.
-Dostupné z: http://interval.cz/clanky/pozadavky-protokolu-http-a-jejich-zpracovani-v-php/
+\bibitem{lngeurope}Gas LNG Europe. [online]. [cit. 2014-12-07].Dostupné z:http://www.gie.eu/down-
+load/maps/2014/GLE{\_}LNG{\_}JUNE2014.pdf
+\bibitem{lngkrk}O PROJEKTU. ADRIA LNG [online]. [cit. 2014-12-07]. Dostupné z: http://www.adria-lng.hr/index.php?f={\&}m=2{\&}s=0
+\bibitem{lngukrajina}Ukraine LNG Terminal, Ukraine. [online]. [cit. 2014-12-07]. Dostupné z: http://www.hydrocarbons-technology.com/projects/ukraine-lng-terminal/
 \end{thebibliography}
 \end{document}
