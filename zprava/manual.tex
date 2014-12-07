@@ -83,7 +83,7 @@ Dalším důležitým zdrojem informací byla webová stránka asociace \textit{
 %kapitola 1.2: V jakém prostředí a za jakých podmínek probíhalo experimentální ověřování validity modelu – pokud čtenář/zadavatel vaší zprávy neuvěří ve validitu vašeho modelu, obvykle vaši práci odmítne už v tomto okamžiku.
 
 Ověřování modelu probíhalo experimentování s modelem a to v rámci různých testů. Výsledky těchto testů byly srovnávány s dostupnými informacemi a také s výsledky, které byly dosaženy analitickými metodami. Jako kontrolní informace byla využita studie na téma \textit{Embargo ruského plynu}.\footnote{viz. http://www.regjeringen.no/upload/OED/pdf\%20filer/Brussel/Hoeffler{\_}Gas{\_}Embargo.pdf}
-Výsledky testů byly také srovnávány napříč mezi soubou, což neověřilo správnost celého modelu, ale shodnosti jednotlivých komponent.
+Výsledky testů byly také srovnávány napříč mezi sebou, což neověřilo správnost celého modelu, ale shodnosti jednotlivých komponent.
 
 \subsection{Zadání projektu}
 
@@ -103,30 +103,32 @@ Ukrajina přeruší transportní cestu, Rusko přestane dodávat apod.).}
 \subsection{Zkoumané scénáře}
 
 \begin{enumerate}
-\item \textbf{Současná situace}
+\item[I.] \textbf{Současná situace}
 
-Zkoumání současného stavu včetně dodávek z Ruska. Scénář je v hodný z důvodu následného ověřování modelu.
+Zkoumání současného stavu včetně dodávek z Ruska.
+Scénář je vhodný z důvodu následného ověřování modelu.
 
-\item \textbf{Zastavení dodávek z ruska}
+\item[II.] \textbf{Zastavení dodávek z Ruska}
 
-Zjištění doby, která uplnyne od zastavení dodávek z Ruska do vyčerpání zásob u jednotlivých zemí.
+Zjištění doby, která uplyne od zastavení dodávek z Ruska do vyčerpání zásob u jednotlivých zemí.
 
-\item \textbf{Dodávání plynu z USA po celý rok}
+\item[III.] \textbf{Dodávání plynu z USA po celý rok}
 
-Simulace stavu, kdy Rusko omezí dodávky plynu, ale začne se dovážet plyn z USA.
+Simulace stavu, kdy se začne dovážet plyn z USA a Rusko omezí dodávky plynu.
 
-\item \textbf{Dovoz plynu z USA pouze v létě}
+\item[IV.] \textbf{Dovoz plynu z USA pouze v letním období}
 
-Varianta předchozího stavu s dodávkami plynu z USA pouze v létě.
+Varianta předchozího scénáře s dodávkami plynu z USA pouze v letním období.
 
-\item \textbf{Dosatečné zásoby na jeden rok}
+\item[V.] \textbf{Dosatečné zásoby na jeden rok}
 
-Zjišťování dostatečné kapacity zásobníků plynu v jednotlivých zemích, tak aby vystačili po dobu 1 roku.
+Zjišťování dostatečné kapacity zásobníků plynu v jednotlivých zemích
+tak, aby v případě plynové krize vystačily po dobu jednoho roku.
 \end{enumerate}
 
 \section{Rozbor tématu a použitých metod/technologií}
 
-Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
+%Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
 
 
 
@@ -139,7 +141,8 @@ Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co
 Pro implementaci byl zvolen jazyk C++ a to ve variantě bez knihoven podporujících simulaci.
 Důvodem tohoto rozhodnutí byla rychlost spustitelného programu a také to,
 že veškeré události v modelu se vykonávají diskrétně v intervalech po jedné hodině.
-\textbf{Modelového času} pro účeli tohoto modelu lze tedy docílit jednoduše vykonáním všech
+Modelového času \cite[str,21]{IMS} pro účeli tohoto modelu lze tedy docílit
+jednoduše vykonáním všech
 událostí se stejným počátečním časem v jedné iteraci cyklu.
 
 
@@ -150,8 +153,11 @@ událostí se stejným počátečním časem v jedné iteraci cyklu.
 
 %Velmi důležité, až fanaticky povinné, kontrolované a hodnocené: na každém místě v textu, kde se poprvé objeví pojem z předmětu IMS bude v závorce uveden odkaz na předmět a číslo slajdu, na kterém je pojem definován. Pokud bude významný pojem z předmětu IMS takto nedokumentován v textu a zjevně bude používán nevhodným nebo nepřesným způsobem, bude tento fakt hodnocen bodovou ztrátou. Tento požadavek je míněn s naprostou vážností. Cílem je vyhnout se studentské tvůrčí činnosti ve vysvětlování známých pojmů, což mnohdy vede k naprostým bludům, ztrátě bodů a zápočtů. Pokud student pojem cituje korektně a přesto nekorektně používá, bude to hodnoceno dvojnásobnou bodovou ztrátou.
 
-Pro získání přenosové doby plynu mezi jednotlivými zeměmi a přístavními terminály, bylo nutné vypočítat tyto hodnotu z délky jednotlivých plynovovdů a rychlosti plynu, který v nich proudí.
-Stejně tak množství plynu, se kterým se pracuje za dobu jedné hodnoty, bylo nutné vypočítat z hodnot, které jsou udány v množství za hodinu.
+Pro získání přenosové doby plynu mezi jednotlivými zeměmi a přístavními terminály,
+bylo nutné vypočítat tyto hodnotu z délky jednotlivých plynovodů a rychlosti plynu,
+který v nich proudí.
+Stejně tak množství plynu, se kterým se pracuje za dobu jedné hodnoty,
+bylo nutné vypočítat z hodnot, které jsou udány v množství za hodinu.
 Všechny vzorce a zdroje jsou uvedeny v kapitole\ref{Rozbor}. 
 
 \subsection{Rozbor tématu}\label{Rozbor}
@@ -184,7 +190,7 @@ daných zemí zásobovat (\ref{lng}).
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& import 	& export & produkce & spotřeba \\
+    Stát 			& Import 	& Export & Produkce & Spotřeba \\
     \hline 
     Česká republika	& 8 479 		& 8 		& 252	& 8 477\\ 
     Slovensko 		& 5 579		& 15		& 124	& 5 820\\
@@ -198,16 +204,16 @@ Jednotky mcm ($m^3 * 10^6$).  Zdroj \cite{IEA}
 \end{center}
 \end{table}
 
-Tyto hodnoty nebyly vhodné do modelu jelikož nedpovídali
+Tyto hodnoty nebyly vhodné do modelu, jelikož neodpovídali
 zvolenému modelovému času jedna hodina. 
-Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepravené na hodiny.
+Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepravené za hodinu.
 Přepočítané hodnoty viz tabulka \ref{tabulka2}. 
 
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& import 	& export & produkce & spotřeba \\
+    Stát 			& Import 	& Export & Produkce & Spotřeba \\
     \hline 
     Česká republika	& 968 		& 1 		& 29		& 968\\ 
     Slovensko 		& 637		& 2		& 14		& 664\\
@@ -225,22 +231,23 @@ Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$)\footnotemark.
 Převod: původní hodnota/365/24.}
 
 Po tomto kroku byly téměř všechny hodnoty připraveny na vložení do modelu.
-Poslední hodnotou, kterou bylo potřeba modifikovat byla spotřeba a to tak
+Poslední hodnotou, kterou bylo potřeba modifikovat byla spotřeba a to tak,
 aby odpovídala spotřebě za letní a za zimní období.
 Vzhledem ke skutečnosti, že se v primárním zdroji informací tyto hodnoty nenacházely
 a z jiného zdroje přesně neodpovídaly nalezeným hodnotám z primárního zdroje
 (viz tabulka \ref{rocni}),
-byl poměr zimní a letní spotřeby získán z hodnot vypsaných v mapě \cite{Mapka staty} a posléze aplikován na hodnoty v tabulce \ref{rocni}.
+byl poměr zimní a letní spotřeby získán z hodnot vypsaných v mapě \cite{Mapka staty}
+a posléze aplikován na hodnoty v tabulce \ref{rocni}.
 
-Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v tabulce
+Výsledný poměr a hodnoty jsou vypsány v tabulce
 \ref{spotreba}.
 
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& spotřeba 	& získaný poměr & spotřeba  & spotřeba \\
-    & celý rok 		&			& duben-září 	& říjen-březen\\
+    Stát 			& Spotřeba 	& Získaný poměr & Spotřeba  & Spotřeba \\
+    					& celý rok 		&			& duben-září 	& říjen-březen\\
     \hline 
     Česká republika	& 968	& 28,6 \%   	& 553	& 1382\\ 
     Slovensko 		& 664	& 29,0 \%	& 385	& 942\\
@@ -261,7 +268,7 @@ Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$).
 \begin{center}
 \begin{tabular}{|l|r|}
     \hline
-    Stát 			& celková kapacita zásobníků\\
+    Stát 			& Celková kapacita zásobníků\\
     \hline 
     Česká republika	& 3 497\\ 
     Slovensko 		& 3 155\\
@@ -278,13 +285,16 @@ Veškeré hodnoty jsou uvedeny v jednotkách mcm ($m^3 * 10^6$).
 
 Hodnoty jsou opět získáný z \cite{IEA}, rovněž zajímavým zdrojem je stránka \url{http://transparency.gie.eu/}
 kde jsou každý den aktualizovány statistiky zásobníků (zaplnění, odběr, kapacita,...)
+
+
 \subsubsection{Přepravní trasy}\label{Preprava}
 
 Jako přepravní síť plynu z místa těžby do místa spotřeby byly zvoleny existující plynovody,
 které jsou vypsány v tabulce \ref{plynovody}.
 Vzhledem k abstrakci jednotlivých států na jeden uzel produkce a spotřeby
 a neuvažování místních rozvodů plynu
-byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států (viz tabulka \ref{staty}).
+byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států
+(viz tabulka \ref{staty}).
 
 \begin{table}[h!]
 \begin{center}
@@ -296,7 +306,8 @@ byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států
     North stream\footnotemark 	& poloostrov Jamal, Rusko & Německo	& 4341 km\\
     Europipe I. 		& Severní moře, Norsko 		& Německo  			& 642 km\\
     Soyuz 			& poloostrov Jamal, Rusko 	& Ukrajina 			& 3640 km\\
-					&							& Slovensko			& 4500 km\\ 
+					&							& Slovensko			& 4500 km\\
+	Soyuz 			& Atyrau, Kazachstán	 		& Ukrajina			& 3000 km\\		 
     \hline
 \end{tabular}
 \caption{Délka uvažovaných plynovodů.} 
@@ -306,7 +317,8 @@ byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států
 
 \footnotetext{Název North stream je označení pouze pro plynovod vedoucí po dně
 Baltského moře jehož délka je 1 224 km, ale pro účely práce bylo vhodnější k délce 
-North streamu přičíst délkou plynovodu vedoucího do místa těžby.}
+North streamu přičíst délku plynovodu vedoucího do místa těžby,
+který North stream zásobuje.}
 
 \begin{table}[h!]
 \begin{center}
@@ -357,6 +369,7 @@ Výsledné hodnoty jsou vypsány v tabulce  \ref{statyprevod}.
     Europipe I. 		& Severní moře, Norsko 	& Německo  			& 9 hodin\\
     Soyuz 			& SZ Ruska				& Ukrajina 			& 51 hodin\\
 					&						& Slovensko			& 74 hodin\\ 
+	Soyuz 			& Atyrau, Kazachstán	 	& Ukrajina			& 42 hodin\\	
     \hline
 \end{tabular}
 \caption{Čas potřebný k překonání uvažovaných plynovodů} 
@@ -396,7 +409,7 @@ Kritéria pro výběr nejvhodnějších lodních terminálů byla existence potr
 dostačující přepravní kapacitou, dále také vzdálenost od místa spotřeby a v neposlední
 řadě také plánovaný roční odběr.
 
-Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce 
+Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce \ref{lngtable}.
 
 \begin{table}[h!]
 \begin{center}
@@ -410,13 +423,29 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce
 	Ukrajina		& Odessa			& 540 000 $m^3$	& 10 $m^3 * 10^9$	& 2018\\
     \hline
 \end{tabular}
-\caption{Terminály LNG, které nejlépe odpovídají kritériům. Zdroje \cite{lngeurope},\cite{lngkrk} a  \cite{lngukrajina}}
+\caption{Terminály LNG, které nejlépe odpovídají kritériům.}
 \label{lngtable}
+Zdroje \cite{lngeurope},\cite{lngkrk} a  \cite{lngukrajina}
 \end{center}
 \end{table}
 
-Zdroje http://www.hydrocarbons-technology.com/projects/ukraine-lng-terminal/
-http://www.adria-lng.hr/
+Současná síť plynovodů mezi zkoumanými státy je schopná pojmout navýšení kapacity
+\footnote{Kapacity možno vyčíst z
+http://www.entsog.eu/public/uploads/files/maps/transmissioncapacity/2014/\\
+ENTSOG{\_}140612{\_}CAP{\_}JUNE2014.pdf
+a průtok například z interaktivní mapky http://www.iea.org/gtf/index.asp.}
+přepravy plynu v důsledku zprovoznění přístavních terminálů na LNG a tudíž je pro potřeby
+modelu dostačující,
+ale vzhledem k narůstající spotřebě zemního plynu by bylo z dlouhodobého hlediska vhodné 
+přepravní síť rozšířit.
+
+Pro účely modelu bylo potřeba dodat informaci o možnosti dopravy zemního plynu
+z terminálu na ostrově Krk (ostatní zvolené terminály leží v modelovaných zemích).
+Přepravní trasa byla zvolena k nejbližší zemi tedy Maďarsku a to ze vzdáleností 
+440 km\footnote{Hodnota změřené za pomoci webové stránky \textit{Mapy.cz} www.mapy.cz} a přepravním zpožděním 6 hodin.
+
+
+
 \section{Koncepce - modelářská témata}
 
 %Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
@@ -464,6 +493,8 @@ do závěru se velmi nehodí psát "auto-zhodnocení" kvality práce, to je výh
 \newpage
 \renewcommand{\refname}{Literatura a použité zdroje}
 \begin{thebibliography}{99}
+\bibitem{IMS}P. Peringer: přednášky předmětu Modelování a simulace
+https://www.fit.vutbr.cz/study/courses/IMS/public/prednasky/IMS.pdf	
 \bibitem{IEA} IEA natural gas information [online]. [cit. 2014-12-03]. ISBN 1683-4267. Dostupné z: http://www.oecd-ilibrary.org/energy/natural-gas-information{\_}16834267
 \bibitem{GIE} Gas Infrastructure Europe [online]. [cit. 2014-12-03]. Dostupné z: http://www.gie.eu.com/
 \bibitem{Mapka staty} http://www.gie.eu.com/download/maps/ENTSOG-GIE{\_}SYSDEV{\_}MAP2013.pdf
