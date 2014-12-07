@@ -364,15 +364,15 @@ Výsledné hodnoty jsou vypsány v tabulce  \ref{statyprevod}.
     \hline
     Název 			& Začátek (místo těžby)	& Konec (cílové státy) 		& Doba přepravy \\
     \hline 
-    Yamal			& SZ Ruska				& Polsko				& 47 hodin\\ 
-    North stream 	& SZ Ruska				& Německo			& 60 hodin\\
+    Yamal			& poloostrov Jamal, Rusko & Polsko				& 47 hodin\\ 
+    North stream 	& poloostrov Jamal, Rusko & Německo			& 60 hodin\\
     Europipe I. 		& Severní moře, Norsko 	& Německo  			& 9 hodin\\
-    Soyuz 			& SZ Ruska				& Ukrajina 			& 51 hodin\\
+    Soyuz 			& poloostrov Jamal, Rusko & Ukrajina 			& 51 hodin\\
 					&						& Slovensko			& 74 hodin\\ 
 	Soyuz 			& Atyrau, Kazachstán	 	& Ukrajina			& 42 hodin\\	
     \hline
 \end{tabular}
-\caption{Čas potřebný k překonání uvažovaných plynovodů} 
+\caption{Čas potřebný k překonání uvažovaných plynovodů.} 
 \label{plynovodyprevod}
 \end{center}
 \end{table}
@@ -441,7 +441,7 @@ přepravní síť rozšířit.
 
 Pro účely modelu bylo potřeba dodat informaci o možnosti dopravy zemního plynu
 z terminálu na ostrově Krk (ostatní zvolené terminály leží v modelovaných zemích).
-Přepravní trasa byla zvolena k nejbližší zemi tedy Maďarsku a to ze vzdáleností 
+Přepravní trasa byla vybrána k nejbližší zemi tedy Maďarsku a to ze vzdáleností 
 440 km\footnote{Hodnota změřené za pomoci webové stránky \textit{Mapy.cz} www.mapy.cz} a přepravním zpožděním 6 hodin.
 
 
@@ -453,9 +453,9 @@ Model rozvodů plynu po modelované země, vychází z informací, které jsou u
 
 Po spuštění aplikace trvá určitou dobu\footnote{Doba přepravy mezi místem produkce a jednotlivou zemí} než se plyn dostane k místu spotřeby. Tento fakt může být zanedbán, jeliž neovlivní výsledky navržených scénářů. (Pokud by byla potřeba tuto skutečnost nezanedbávat, docílilo byse toho například zvýšením počátečních zásob zemí o hodnotu, která se spotřebuje, než dojde první dodávka plynu.) 
 
-\subsubsection{Způsob vyjádření konceptuálního modelu}
+\subsection{Způsob vyjádření konceptuálního modelu}
 kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
-\subsubsection{Formy konceptuálního modelu}
+\subsection{Formy konceptuálního modelu}
 kapitola 3.2: Formy konceptuálního modelu (důraz je kladen na srozumitelnost sdělení). Podle potřeby uveďte konkrétní relevantní:
 obrázek/náčrt/schéma/mapa (možno čitelně rukou)
 matematické rovnice - u některých témat (např. se spojitými prvky, optimalizace, ...) naprosto nezbytné. Dobré je chápat, že veličiny (fyzikální, technické, ekonomické) mají jednotky, bez kterých údaj nedává smysl.
@@ -471,17 +471,32 @@ Popište abstraktně architekturu vašeho programu, princip jeho činnosti, výz
 %Tato kapitola má různou důležitost pro různé typy zadání. U implementačních témat lze tady očekávat jádro dokumentace. Zde můžete využít zajímavého prvku ve vašem simulačním modelu a tady ho "prodat".
 %kapitola 4.1: Minimálně je nutno ukázat mapování abstraktního (koncept.) modelu do simulačního (resp. simulátoru). Např. které třídy odpovídají kterým procesům/veličinám a podobně.
 
-Vzhledem k jednoduchosti našeho modelu a použití disktrétního času byla vybrána koncepce, kdy jádro programu tvoří cyklus while, ve kterém se vykonávají akce transportu, spotřeby, exportu a importu. Odlišnost v jednotlivývh typech simulací je ve funkcích použitých pro inicializaci struktur, které reprezentují jenotlivé objekty.
+Vzhledem k jednoduchosti modelu a použití
+disktrétního času byla vybrána koncepce,
+kdy jádro programu tvoří cyklus \texttt{while}, ve kterém se
+vykonávají akce transportu, spotřeby, exportu a importu.
+Odlišnost v jednotlivých typech simulací je ve funkcích
+použitých pro inicializaci struktur, které reprezentují
+jednotlivé prvky modelovaného systému.
 
 \subsection{Struktury a inicializace}
 
-Jednotlivé struktury se liší svými parametry. Například struktura reprezentující terminál obsahuje položky pro reprezentaci cílového uzlu v síti, množství přenášeného plynu a dobu přenosu. Oproti tomu struktura reprezentující transport obsahuje navíc ještě položku reprezentující zdroj.
-Struktura určená pro reprezentaci států (míst spotřeby), pak obsahuje položky pro velikost zásobníku, zásobu plynu, spotřebu a podobně.
-
+Jednotlivé struktury se liší svými parametry.
+Například struktura reprezentující terminál obsahuje položky pro reprezentaci cílového uzlu v síti,
+množství přenášeného plynu a dobu přenosu.
+Oproti tomu struktura reprezentující transport obsahuje navíc ještě položku reprezentující zdroj.
+Struktura určená pro reprezentaci států (míst spotřeby), pak obsahuje položky pro velikost zásobníku,
+zásobu plynu, spotřebu a podobně.
 
 \subsection{Vektor transakcí}
 
-Protože není využito simlačních knihoven, dochází k absenci kalendáře událostí. Přesto, že jsou zpracovávány události po každé hodině modelového času, bylo nutné implementovat způsob zpracování událostí v určitém čase. Pro tyto účely byla vytvořen \textbf{vektor transkací}, do něhož jsou ukládány události, které se mají stát až po nějakém čase. Tyto události se týkají přenosu zemního plynu. Nejprve je potřeba plyn odečíst ze zásob odesílající země a až po nějakém čase mají být uloženy do zásobníku v cílové zemi.
+Protože není využito simlačních knihoven, dochází k absenci kalendáře událostí.
+Přesto, že jsou zpracovávány události po každé hodině modelového času,
+bylo nutné implementovat způsob zpracování událostí v určitém čase.
+Pro tyto účely byl vytvořen \textbf{vektor transkací}, do něhož jsou ukládány události,
+které se mají vykonat až po určitém čase.
+Tyto události se týkají přenosu zemního plynu.
+Nejprve je potřeba plyn odečíst ze zásob odesílající země a až po nějakém čase mají být uloženy do zásobníku v cílové zemi.
 
 Obsah vektoru tvoří struktury s položkami reprezentujícími cílovou zemi, čas přenosu a množství zemího plynu, které je přenášeno. Tento vektor je po každé hodině modelového času procházen a časy u jednotlivých záznamů jsou dekrementovány. Pokud čas dosáhne hodnoty 0, je tato transakce dokončena\footnote{Plyn je uložen v zásobníku cílové stanice a záznam je z vektoru transakcí odstraněn}. 
 
@@ -489,7 +504,21 @@ Obsah vektoru tvoří struktury s položkami reprezentujícími cílovou zemi, �
 
 Zpracování akcí se dá rozčlenit do několika částí, které se opakují. Nejprve se vloží informace o importu plynu od přístavních terminálů do vektoru transakcí, poté se spotřebuje plyn a exportuje se do zemí mimo modelovaný systém. Pak se vloží do vektoru transakcí informace o přesunu plynu mezi jednotlivými zeměmi a odečte se dané množství od zásob zdrojové země. Na závěr se provede průchod vektorem transakcí a transakce, jež mají být provedeny v aktuálním čase se provedou\footnote{funkce \texttt{transakceCheck()}}. 
 
+\subsection{Modelový čas}
 
+Modelový čas byl zvolen jedna hodina a tato jedna hodina odpovídá jedné iteraci hlavního cyklu while.
+
+Aby model odpovídal reálnému světu, bylo potřeba zanést střídání letního a zimního období
+\footnote{letní období duben-září, zimní období říjen-březen}.
+Důvodem tohoto požadavku byla značná rozdílnost ve spotřebě zemního plynu jednotlivých míst spotřeby
+v různých obdobích (v letním období menší spotřeba, v zimním větší).
+Změny období bylo docíleno pomocí počítadla cyklů, jehož hodnota se v každé iteraci porovnává 
+s aktuální hodnotou značící začátek nového období, pokud jsou hodnoty totožné 
+je hodnota značící začátek nového období navýšena o hodnotu 182\footnote{hodnota 182 značí půlku jednoho roku}
+a spotřeba jednotlivých států je přepnuta na hodnotu odpovídající danému období.
+Inicializační hodnota hodnoty značící začátek nového období je 90 \footnote{90 den odpovídá počátku dubna - počátku letního období}
+a tímto je docíleno,
+že modelový čas odpovídá svým začátkem pomyslnému začátku roku reálného světa.
 
 \section{Podstata simulačních experimentů a jejich průběh}
 
