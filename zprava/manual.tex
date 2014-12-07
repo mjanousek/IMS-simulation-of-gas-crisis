@@ -115,8 +115,8 @@ kapitola 2.1: Popis použitých postupů pro vytvoření modelu a zdůvodnění,
 Pro implementaci byl zvolen jazyk C++ a to ve variantě bez knihoven podporujících simulaci.
 Důvodem tohoto rozhodnutí byla rychlost spustitelného programu a také to,
 že veškeré události v modelu se vykonávají diskrétně v intervalech po jedné hodině.
-\textbf{Modelového času} pro účeli tohoto modelu lze tedy docílit jednoduše vykonáním všech
-událostí se stejným počátečním časem v jedné iteraci cyklu.
+Modelového času (přednáška IMS 25.9.2014 \cite[str. 21]{IMS}), pro účeli tohoto modelu lze tedy docílit
+jednoduše vykonáním všech událostí se stejným počátečním časem v jedné iteraci cyklu.
 
 
 \vline
@@ -156,7 +156,7 @@ daných zemí zásobovat (\ref{lng}).
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& import 	& export & produkce & spotřeba \\
+    Stát 			& Import 	& Export & Produkce & Spotřeba \\
     \hline 
     Česká republika	& 8 479 		& 8 		& 252	& 8 477\\ 
     Slovensko 		& 5 579		& 15		& 124	& 5 820\\
@@ -179,7 +179,7 @@ Přepočítané hodnoty viz tabulka \ref{tabulka2}.
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& import 	& export & produkce & spotřeba \\
+    Stát 			& Import 	& Export & Produkce & Spotřeba \\
     \hline 
     Česká republika	& 968 		& 1 		& 29		& 968\\ 
     Slovensko 		& 637		& 2		& 14		& 664\\
@@ -211,7 +211,7 @@ Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v ta
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& spotřeba 	& získaný poměr & spotřeba  & spotřeba \\
+    Stát 			& Spotřeba 	& Získaný poměr & Spotřeba  & Spotřeba \\
     & celý rok 		&			& duben-září 	& říjen-březen\\
     \hline 
     Česká republika	& 968	& 28,6 \%   	& 553	& 1382\\ 
@@ -233,7 +233,7 @@ Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$).
 \begin{center}
 \begin{tabular}{|l|r|}
     \hline
-    Stát 			& celková kapacita zásobníků\\
+    Stát 			& Maximální kapacita zásobníků\\
     \hline 
     Česká republika	& 3 497\\ 
     Slovensko 		& 3 155\\
@@ -271,7 +271,7 @@ byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států
 					&							& Slovensko			& 4500 km\\ 
     \hline
 \end{tabular}
-\caption{Délka uvažovaných plynovodů.} 
+\caption{Délka uvažovaných plynovodů. Zdroj \cite{plynovody}} 
 \label{plynovody}
 \end{center}
 \end{table}
@@ -286,7 +286,7 @@ North streamu přičíst délkou plynovodu vedoucího do místa těžby.}
     \hline
     Stát 			& Česko		& Slovensko 		& Maďarsko	& Polsko & Ukrajina\\
     \hline 
-    Česko			& 0		& 290 km		& 445	& 520    & 1150\\ 
+    Česko			& 0		& 290		& 445	& 520    & 1150\\ 
     Slovensko 		& 290	& 0			& 160	& 540    & 1010\\
     Maďarsko 		& 445	& 160		& 0		& 545 	 & 900\\
     Polsko 			& 520	& 540		& 545 	& 0		 & 695\\
@@ -368,7 +368,7 @@ Kritéria pro výběr nejvhodnějších lodních terminálů byla existence potr
 dostačující přepravní kapacitou, dále také vzdálenost od místa spotřeby a v neposlední
 řadě také plánovaný roční odběr.
 
-Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce 
+Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce \ref{lngtable}.
 
 \begin{table}[h!]
 \begin{center}
@@ -378,7 +378,7 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce
     			&				&				& ročního odběru		&\\
     \hline 
 	Polsko		& Swinouscije	& 320 000 $m^3$	& 7,5 $m^3 * 10^9$	& 2014\\
-	Chorvatsko 	& Krk			& 250,000 $m^3$	& 10 $m^3 * 10^9$	& 2017\\
+	Chorvatsko 	& Krk			& 250 000 $m^3$	& 10 $m^3 * 10^9$	& 2017\\
 	Ukrajina		& Odessa			& 540 000 $m^3$	& 10 $m^3 * 10^9$	& 2018\\
     \hline
 \end{tabular}
@@ -387,8 +387,17 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce
 \end{center}
 \end{table}
 
-Zdroje http://www.hydrocarbons-technology.com/projects/ukraine-lng-terminal/
-http://www.adria-lng.hr/
+
+
+Současná potrubní síť na přepravu plynu je
+mezi jednotlivými státy svojí přepravní kapacitou dostačující 
+i po připojení výše zmiňovaných terminálů na zkapalněný zemní plyn, tudíž není
+třeba uvažovat její potřebné rozšíření.
+
+Jedinou informací, kterou je třeba dále doplnit o terminálech na LNG,
+je vzdálenost terminálu na ostrově Krk od námi zkoumané nejbližší země a tou je Maďarsko. 
+Tato vzdálenost činní 440 km\footnote{Hodnoty změřené za pomoci webové stránky \textit{Mapy.cz} (www.Mapy.cz)} a čas potřebný k překonání vzdálenosti je 6 hodin.
+
 \section{Koncepce - modelářská témata}
 
 Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
@@ -432,8 +441,11 @@ do závěru se velmi nehodí psát "auto-zhodnocení" kvality práce, to je výh
 \newpage
 \renewcommand{\refname}{Literatura a použité zdroje}
 \begin{thebibliography}{99}
+\bibitem{IMS} P. Peringer: přednášky předmětu Modelování a simulace
+https://www.fit.vutbr.cz/study/courses/IMS/public/prednasky/IMS.pdf
 \bibitem{IEA} IEA natural gas information [online]. [cit. 2014-12-03]. ISBN 1683-4267. Dostupné z: http://www.oecd-ilibrary.org/energy/natural-gas-information{\_}16834267
 \bibitem{GIE} Gas Infrastructure Europe [online]. [cit. 2014-12-03]. Dostupné z: http://www.gie.eu.com/
+\bibitem{plynovody}Gasprom [online]. [cit. 2014-12-07]. Dostupné z: http://www.gazprom.com/
 \bibitem{Mapka staty} http://www.gie.eu.com/download/maps/ENTSOG-GIE{\_}SYSDEV{\_}MAP2013.pdf
 \bibitem{engineering} Natural gas engineering and safety challenges. pages cm. ISBN 978-331-9089-478.
 \bibitem{lngeurope}Gas LNG Europe. [online]. [cit. 2014-12-07].Dostupné z:http://www.gie.eu/down-
