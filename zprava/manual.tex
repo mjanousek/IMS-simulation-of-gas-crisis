@@ -451,7 +451,7 @@ Přepravní trasa byla zvolena k nejbližší zemi tedy Maďarsku a to ze vzdál
 %Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
 Model rozvodů plynu po modelované země, vychází z informací, které jsou uvedeny v \ref{Rozbor}. Jako místa spotřeby byly zvoleny hlavní města jednotlivých zemí (viz. \ref{Preprava}) a přepravní trasy byly modelovány pomocí údajů délky a přepravní doby (zanedbána poloha a tvar). 
 
-Po spuštění aplikace trvá určitou dobu\footnote{Doba přepravy mezi místem produkce a jednotlivou zemí} než se plyn dostane k místu spotřeby. Tento fakt může být zanedbán, jeliž neovlivní výsledky navržených scénářů. (Pokud by byla potřeba tuto skutečnost nezanedbávat, docílilo byse toho například zvýšením počátečních zásob zemí o hodnotu, která se spotřebuje, než dojde první dodávka plynu.)  
+Po spuštění aplikace trvá určitou dobu\footnote{Doba přepravy mezi místem produkce a jednotlivou zemí} než se plyn dostane k místu spotřeby. Tento fakt může být zanedbán, jeliž neovlivní výsledky navržených scénářů. (Pokud by byla potřeba tuto skutečnost nezanedbávat, docílilo byse toho například zvýšením počátečních zásob zemí o hodnotu, která se spotřebuje, než dojde první dodávka plynu.) 
 
 \subsubsection{Způsob vyjádření konceptuálního modelu}
 kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
@@ -468,8 +468,26 @@ Popište abstraktně architekturu vašeho programu, princip jeho činnosti, výz
 
 \section{Architektura simulačního modelu/simulátoru}
 
-Tato kapitola má různou důležitost pro různé typy zadání. U implementačních témat lze tady očekávat jádro dokumentace. Zde můžete využít zajímavého prvku ve vašem simulačním modelu a tady ho "prodat".
-kapitola 4.1: Minimálně je nutno ukázat mapování abstraktního (koncept.) modelu do simulačního (resp. simulátoru). Např. které třídy odpovídají kterým procesům/veličinám a podobně.
+%Tato kapitola má různou důležitost pro různé typy zadání. U implementačních témat lze tady očekávat jádro dokumentace. Zde můžete využít zajímavého prvku ve vašem simulačním modelu a tady ho "prodat".
+%kapitola 4.1: Minimálně je nutno ukázat mapování abstraktního (koncept.) modelu do simulačního (resp. simulátoru). Např. které třídy odpovídají kterým procesům/veličinám a podobně.
+
+Vzhledem k jednoduchosti našeho modelu a použití disktrétního času byla vybrána koncepce, kdy jádro programu tvoří cyklus while, ve kterém se vykonávají akce transportu, spotřeby, exportu a importu. Odlišnost v jednotlivývh typech simulací je ve funkcích použitých pro inicializaci struktur, které reprezentují jenotlivé objekty.
+
+\subsection{Struktury a inicializace}
+
+Jednotlivé struktury se liší svými parametry. Například struktura reprezentující terminál obsahuje položky pro reprezentaci cílového uzlu v síti, množství přenášeného plynu a dobu přenosu. Oproti tomu struktura reprezentující transport obsahuje navíc ještě položku reprezentující zdroj.
+Struktura určená pro reprezentaci států (míst spotřeby), pak obsahuje položky pro velikost zásobníku, zásobu plynu, spotřebu a podobně.
+
+
+\subsection{Vektor transakcí}
+
+Protože není využito simlačních knihoven, dochází k absenci kalendáře událostí. Přesto, že jsou zpracovávány události po každé hodině modelového času, bylo nutné implementovat způsob zpracování událostí v určitém čase. Pro tyto účely byla vytvořen \textbf{vektor transkací}, do něhož jsou ukládány události, které se mají stát až po nějakém čase. Tyto události se týkají přenosu zemního plynu. Nejprve je potřeba plyn odečíst ze zásob odesílající země a až po nějakém čase mají být uloženy do zásobníku v cílové zemi.
+
+Obsah vektoru tvoří struktury s položkami reprezentujícími cílovou zemi, čas přenosu a množství zemího plynu, které je přenášeno. Tento vektor je po každé hodině modelového času procházen a časy u jednotlivých záznamů jsou dekrementovány. Pokud čas dosáhne hodnoty 0, je tato transakce dokončena\footnote{Plyn je uložen v zásobníku cílové stanice a záznam je z vektoru transakcí odstraněn}. 
+
+\subsection{Zpracování akcí}
+
+Zpracování akcí se dá rozčlenit do několika částí, které se opakují. Nejprve se vloží informace o importu plynu od přístavních terminálů do vektoru transakcí, poté se spotřebuje plyn a exportuje se do zemí mimo modelovaný systém. Pak se vloží do vektoru transakcí informace o přesunu plynu mezi jednotlivými zeměmi a odečte se dané množství od zásob zdrojové země. Na závěr se provede průchod vektorem transakcí a transakce, jež mají být provedeny v aktuálním čase se provedou\footnote{funkce \texttt{transakceCheck()}}. 
 
 
 

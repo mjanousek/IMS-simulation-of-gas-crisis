@@ -18,5 +18,8 @@
 \BOOKMARK [3][-]{subsubsection.3.0.6}{Formy konceptu\341ln\355ho modelu}{subsubsection.3.0.5}% 18
 \BOOKMARK [1][-]{section.4}{Koncepce - implementacn\355 t\351mata}{}% 19
 \BOOKMARK [1][-]{section.5}{Architektura simulacn\355ho modelu/simul\341toru}{}% 20
-\BOOKMARK [1][-]{section.6}{Podstata simulacn\355ch experimentu a jejich prubeh}{}% 21
-\BOOKMARK [1][-]{section.7}{Shrnut\355 simulacn\355ch experimentu a z\341ver}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{Struktury a inicializace}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.2}{Vektor transakc\355}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.3}{Zpracov\341n\355 akc\355}{section.5}% 23
+\BOOKMARK [1][-]{section.6}{Podstata simulacn\355ch experimentu a jejich prubeh}{}% 24
+\BOOKMARK [1][-]{section.7}{Shrnut\355 simulacn\355ch experimentu a z\341ver}{}% 25
