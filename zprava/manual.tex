@@ -103,30 +103,30 @@ Ukrajina přeruší transportní cestu, Rusko přestane dodávat apod.).}
 \subsection{Zkoumané scénáře}
 
 \begin{enumerate}
-\item[I.] \textbf{Současná situace}
+\item \textbf{Současná situace}
 
 Zkoumání současného stavu včetně dodávek z Ruska. Scénář je v hodný z důvodu následného ověřování modelu.
 
-\item[II.] \textbf{Zastavení dodávek z ruska}
+\item \textbf{Zastavení dodávek z ruska}
 
 Zjištění doby, která uplnyne od zastavení dodávek z Ruska do vyčerpání zásob u jednotlivých zemí.
 
-\item[III.] \textbf{Dodávání plynu z USA po celý rok}
+\item \textbf{Dodávání plynu z USA po celý rok}
 
 Simulace stavu, kdy Rusko omezí dodávky plynu, ale začne se dovážet plyn z USA.
 
-\item[IV.] \textbf{Dovoz plynu z USA pouze v létě}
+\item \textbf{Dovoz plynu z USA pouze v létě}
 
 Varianta předchozího stavu s dodávkami plynu z USA pouze v létě.
 
-\item[V.] \textbf{Dosatečné zásoby na jeden rok}
+\item \textbf{Dosatečné zásoby na jeden rok}
 
 Zjišťování dostatečné kapacity zásobníků plynu v jednotlivých zemích, tak aby vystačili po dobu 1 roku.
 \end{enumerate}
 
 \section{Rozbor tématu a použitých metod/technologií}
 
-%Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
+Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
 
 
 
@@ -139,8 +139,8 @@ Zjišťování dostatečné kapacity zásobníků plynu v jednotlivých zemích,
 Pro implementaci byl zvolen jazyk C++ a to ve variantě bez knihoven podporujících simulaci.
 Důvodem tohoto rozhodnutí byla rychlost spustitelného programu a také to,
 že veškeré události v modelu se vykonávají diskrétně v intervalech po jedné hodině.
-Modelového času (přednáška IMS 25.9.2014 \cite[str. 21]{IMS}), pro účeli tohoto modelu lze tedy docílit
-jednoduše vykonáním všech událostí se stejným počátečním časem v jedné iteraci cyklu.
+\textbf{Modelového času} pro účeli tohoto modelu lze tedy docílit jednoduše vykonáním všech
+událostí se stejným počátečním časem v jedné iteraci cyklu.
 
 
 %\vline
@@ -152,7 +152,7 @@ jednoduše vykonáním všech událostí se stejným počátečním časem v jed
 
 Pro získání přenosové doby plynu mezi jednotlivými zeměmi a přístavními terminály, bylo nutné vypočítat tyto hodnotu z délky jednotlivých plynovovdů a rychlosti plynu, který v nich proudí.
 Stejně tak množství plynu, se kterým se pracuje za dobu jedné hodnoty, bylo nutné vypočítat z hodnot, které jsou udány v množství za hodinu.
-Všechny vzorce a zdroje jsou uvedeny v kapetole \ref{Rozbor} 
+Všechny vzorce a zdroje jsou uvedeny v kapitole\ref{Rozbor}. 
 
 \subsection{Rozbor tématu}\label{Rozbor}
 
@@ -184,7 +184,7 @@ daných zemí zásobovat (\ref{lng}).
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& Import 	& Export & Produkce & Spotřeba \\
+    Stát 			& import 	& export & produkce & spotřeba \\
     \hline 
     Česká republika	& 8 479 		& 8 		& 252	& 8 477\\ 
     Slovensko 		& 5 579		& 15		& 124	& 5 820\\
@@ -207,7 +207,7 @@ Přepočítané hodnoty viz tabulka \ref{tabulka2}.
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& Import 	& Export & Produkce & Spotřeba \\
+    Stát 			& import 	& export & produkce & spotřeba \\
     \hline 
     Česká republika	& 968 		& 1 		& 29		& 968\\ 
     Slovensko 		& 637		& 2		& 14		& 664\\
@@ -239,7 +239,7 @@ Výsledný poměr a hodnoty jsou společně se získaným poměrem vypsány v ta
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
     \hline
-    Stát 			& Spotřeba 	& Získaný poměr & Spotřeba  & Spotřeba \\
+    Stát 			& spotřeba 	& získaný poměr & spotřeba  & spotřeba \\
     & celý rok 		&			& duben-září 	& říjen-březen\\
     \hline 
     Česká republika	& 968	& 28,6 \%   	& 553	& 1382\\ 
@@ -261,7 +261,7 @@ Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$).
 \begin{center}
 \begin{tabular}{|l|r|}
     \hline
-    Stát 			& Maximální kapacita zásobníků\\
+    Stát 			& celková kapacita zásobníků\\
     \hline 
     Česká republika	& 3 497\\ 
     Slovensko 		& 3 155\\
@@ -297,10 +297,9 @@ byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států
     Europipe I. 		& Severní moře, Norsko 		& Německo  			& 642 km\\
     Soyuz 			& poloostrov Jamal, Rusko 	& Ukrajina 			& 3640 km\\
 					&							& Slovensko			& 4500 km\\ 
-	Soyuz			& Atyrau	, Kazachstán			& Ukrajina			& 3000 km\\
     \hline
 \end{tabular}
-\caption{Délka uvažovaných plynovodů. Zdroj \cite{plynovody}} 
+\caption{Délka uvažovaných plynovodů.} 
 \label{plynovody}
 \end{center}
 \end{table}
@@ -315,7 +314,7 @@ North streamu přičíst délkou plynovodu vedoucího do místa těžby.}
     \hline
     Stát 			& Česko		& Slovensko 		& Maďarsko	& Polsko & Ukrajina\\
     \hline 
-    Česko			& 0		& 290		& 445	& 520    & 1150\\ 
+    Česko			& 0		& 290 km		& 445	& 520    & 1150\\ 
     Slovensko 		& 290	& 0			& 160	& 540    & 1010\\
     Maďarsko 		& 445	& 160		& 0		& 545 	 & 900\\
     Polsko 			& 520	& 540		& 545 	& 0		 & 695\\
@@ -353,12 +352,11 @@ Výsledné hodnoty jsou vypsány v tabulce  \ref{statyprevod}.
     \hline
     Název 			& Začátek (místo těžby)	& Konec (cílové státy) 		& Doba přepravy \\
     \hline 
-    Yamal			& poloostrov Jamal, Rusko& Polsko				& 47 hodin\\ 
-    North stream 	& poloostrov Jamal, Rusko& Německo			& 60 hodin\\
+    Yamal			& SZ Ruska				& Polsko				& 47 hodin\\ 
+    North stream 	& SZ Ruska				& Německo			& 60 hodin\\
     Europipe I. 		& Severní moře, Norsko 	& Německo  			& 9 hodin\\
-    Soyuz 			& poloostrov Jamal, Rusko& Ukrajina 			& 51 hodin\\
+    Soyuz 			& SZ Ruska				& Ukrajina 			& 51 hodin\\
 					&						& Slovensko			& 74 hodin\\ 
-	Soyuz			& Atyrau	, Kazachstán		& Ukrajina			& 42 hodin\\
     \hline
 \end{tabular}
 \caption{Čas potřebný k překonání uvažovaných plynovodů} 
@@ -398,7 +396,7 @@ Kritéria pro výběr nejvhodnějších lodních terminálů byla existence potr
 dostačující přepravní kapacitou, dále také vzdálenost od místa spotřeby a v neposlední
 řadě také plánovaný roční odběr.
 
-Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce \ref{lngtable}.
+Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce 
 
 \begin{table}[h!]
 \begin{center}
@@ -408,7 +406,7 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce \ref{lngta
     			&				&				& ročního odběru		&\\
     \hline 
 	Polsko		& Swinouscije	& 320 000 $m^3$	& 7,5 $m^3 * 10^9$	& 2014\\
-	Chorvatsko 	& Krk			& 250 000 $m^3$	& 10 $m^3 * 10^9$	& 2017\\
+	Chorvatsko 	& Krk			& 250,000 $m^3$	& 10 $m^3 * 10^9$	& 2017\\
 	Ukrajina		& Odessa			& 540 000 $m^3$	& 10 $m^3 * 10^9$	& 2018\\
     \hline
 \end{tabular}
@@ -417,23 +415,18 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce \ref{lngta
 \end{center}
 \end{table}
 
-Současná potrubní síť na přepravu plynu je
-mezi jednotlivými státy svojí přepravní kapacitou dostačující 
-i po připojení výše zmiňovaných terminálů na zkapalněný zemní plyn, tudíž není
-třeba uvažovat její potřebné rozšíření.
-
-Jedinou informací, kterou je třeba dále doplnit o terminálech na LNG,
-je vzdálenost terminálu na ostrově Krk od námi zkoumané nejbližší země a tou je Maďarsko. 
-Tato vzdálenost činní 440 km\footnote{Hodnoty změřené za pomoci webové stránky \textit{Mapy.cz} (www.Mapy.cz)} a čas potřebný k překonání vzdálenosti je 6 hodin.
-
+Zdroje http://www.hydrocarbons-technology.com/projects/ukraine-lng-terminal/
+http://www.adria-lng.hr/
 \section{Koncepce - modelářská témata}
 
-Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
+%Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
+Model rozvodů plynu po modelované země, vychází z informací, které jsou uvedeny v \ref{Rozbor}. Jako místa spotřeby byly zvoleny hlavní města jednotlivých zemí (viz. \ref{Preprava}) a přepravní trasy byly modelovány pomocí údajů délky a přepravní doby (zanedbána poloha a tvar). 
 
+Po spuštění aplikace trvá určitou dobu\footnote{Doba přepravy mezi místem produkce a jednotlivou zemí} než se plyn dostane k místu spotřeby. Tento fakt může být zanedbán, jeliž neovlivní výsledky navržených scénářů. (Pokud by byla potřeba tuto skutečnost nezanedbávat, docílilo byse toho například zvýšením počátečních zásob zemí o hodnotu, která se spotřebuje, než dojde první dodávka plynu.)  
 
-\subsection{Způsob vyjádření konceptuálního modelu}
+\subsubsection{Způsob vyjádření konceptuálního modelu}
 kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
-\subsection{Formy konceptuálního modelu}
+\subsubsection{Formy konceptuálního modelu}
 kapitola 3.2: Formy konceptuálního modelu (důraz je kladen na srozumitelnost sdělení). Podle potřeby uveďte konkrétní relevantní:
 obrázek/náčrt/schéma/mapa (možno čitelně rukou)
 matematické rovnice - u některých témat (např. se spojitými prvky, optimalizace, ...) naprosto nezbytné. Dobré je chápat, že veličiny (fyzikální, technické, ekonomické) mají jednotky, bez kterých údaj nedává smysl.
@@ -471,11 +464,8 @@ do závěru se velmi nehodí psát "auto-zhodnocení" kvality práce, to je výh
 \newpage
 \renewcommand{\refname}{Literatura a použité zdroje}
 \begin{thebibliography}{99}
-\bibitem{IMS} P. Peringer: přednášky předmětu Modelování a simulace
-https://www.fit.vutbr.cz/study/courses/IMS/public/prednasky/IMS.pdf
 \bibitem{IEA} IEA natural gas information [online]. [cit. 2014-12-03]. ISBN 1683-4267. Dostupné z: http://www.oecd-ilibrary.org/energy/natural-gas-information{\_}16834267
 \bibitem{GIE} Gas Infrastructure Europe [online]. [cit. 2014-12-03]. Dostupné z: http://www.gie.eu.com/
-\bibitem{plynovody}Gasprom [online]. [cit. 2014-12-07]. Dostupné z: http://www.gazprom.com/
 \bibitem{Mapka staty} http://www.gie.eu.com/download/maps/ENTSOG-GIE{\_}SYSDEV{\_}MAP2013.pdf
 \bibitem{engineering} Natural gas engineering and safety challenges. pages cm. ISBN 978-331-9089-478.
 \bibitem{lngeurope}Gas LNG Europe. [online]. [cit. 2014-12-07].Dostupné z:http://www.gie.eu/down-
