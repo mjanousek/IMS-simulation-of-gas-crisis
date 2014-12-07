@@ -103,30 +103,30 @@ Ukrajina přeruší transportní cestu, Rusko přestane dodávat apod.).}
 \subsection{Zkoumané scénáře}
 
 \begin{enumerate}
-\item \textbf{Současná situace}
+\item[I.] \textbf{Současná situace}
 
 Zkoumání současného stavu včetně dodávek z Ruska. Scénář je v hodný z důvodu následného ověřování modelu.
 
-\item \textbf{Zastavení dodávek z ruska}
+\item[II.] \textbf{Zastavení dodávek z ruska}
 
 Zjištění doby, která uplnyne od zastavení dodávek z Ruska do vyčerpání zásob u jednotlivých zemí.
 
-\item \textbf{Dodávání plynu z USA po celý rok}
+\item[III.] \textbf{Dodávání plynu z USA po celý rok}
 
 Simulace stavu, kdy Rusko omezí dodávky plynu, ale začne se dovážet plyn z USA.
 
-\item \textbf{Dovoz plynu z USA pouze v létě}
+\item[IV.] \textbf{Dovoz plynu z USA pouze v létě}
 
 Varianta předchozího stavu s dodávkami plynu z USA pouze v létě.
 
-\item \textbf{Dosatečné zásoby na jeden rok}
+\item[V.] \textbf{Dosatečné zásoby na jeden rok}
 
 Zjišťování dostatečné kapacity zásobníků plynu v jednotlivých zemích, tak aby vystačili po dobu 1 roku.
 \end{enumerate}
 
 \section{Rozbor tématu a použitých metod/technologií}
 
-Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
+%Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
 
 
 
@@ -297,6 +297,7 @@ byla pro účely modelu použita vzdálenost hlavních měst zkoumaných států
     Europipe I. 		& Severní moře, Norsko 		& Německo  			& 642 km\\
     Soyuz 			& poloostrov Jamal, Rusko 	& Ukrajina 			& 3640 km\\
 					&							& Slovensko			& 4500 km\\ 
+	Soyuz			& Atyrau	, Kazachstán			& Ukrajina			& 3000 km\\
     \hline
 \end{tabular}
 \caption{Délka uvažovaných plynovodů. Zdroj \cite{plynovody}} 
@@ -352,11 +353,12 @@ Výsledné hodnoty jsou vypsány v tabulce  \ref{statyprevod}.
     \hline
     Název 			& Začátek (místo těžby)	& Konec (cílové státy) 		& Doba přepravy \\
     \hline 
-    Yamal			& SZ Ruska				& Polsko				& 47 hodin\\ 
-    North stream 	& SZ Ruska				& Německo			& 60 hodin\\
+    Yamal			& poloostrov Jamal, Rusko& Polsko				& 47 hodin\\ 
+    North stream 	& poloostrov Jamal, Rusko& Německo			& 60 hodin\\
     Europipe I. 		& Severní moře, Norsko 	& Německo  			& 9 hodin\\
-    Soyuz 			& SZ Ruska				& Ukrajina 			& 51 hodin\\
+    Soyuz 			& poloostrov Jamal, Rusko& Ukrajina 			& 51 hodin\\
 					&						& Slovensko			& 74 hodin\\ 
+	Soyuz			& Atyrau	, Kazachstán		& Ukrajina			& 42 hodin\\
     \hline
 \end{tabular}
 \caption{Čas potřebný k překonání uvažovaných plynovodů} 
@@ -415,8 +417,6 @@ Z těchto kritérií nejvíce vyhovují terminály vypsané v tabulce \ref{lngta
 \end{center}
 \end{table}
 
-
-
 Současná potrubní síť na přepravu plynu je
 mezi jednotlivými státy svojí přepravní kapacitou dostačující 
 i po připojení výše zmiňovaných terminálů na zkapalněný zemní plyn, tudíž není
@@ -429,9 +429,11 @@ Tato vzdálenost činní 440 km\footnote{Hodnoty změřené za pomoci webové st
 \section{Koncepce - modelářská témata}
 
 Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
-\subsubsection{Způsob vyjádření konceptuálního modelu}
+
+
+\subsection{Způsob vyjádření konceptuálního modelu}
 kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
-\subsubsection{Formy konceptuálního modelu}
+\subsection{Formy konceptuálního modelu}
 kapitola 3.2: Formy konceptuálního modelu (důraz je kladen na srozumitelnost sdělení). Podle potřeby uveďte konkrétní relevantní:
 obrázek/náčrt/schéma/mapa (možno čitelně rukou)
 matematické rovnice - u některých témat (např. se spojitými prvky, optimalizace, ...) naprosto nezbytné. Dobré je chápat, že veličiny (fyzikální, technické, ekonomické) mají jednotky, bez kterých údaj nedává smysl.
