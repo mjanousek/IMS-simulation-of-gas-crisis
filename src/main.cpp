@@ -17,12 +17,6 @@ ukr 	3139 	0 		2288 		5882 		3195000
 
 */
 
-/*
-
-
-
-*/
-
 #include <iostream>
 #include <list>
 #include <iterator>
