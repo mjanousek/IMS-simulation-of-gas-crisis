@@ -305,7 +305,7 @@ void testOdpojeniRuska(){
 
 void testZasobnikyDoBudoucna(){
 
-//TODO ezperimentovat se zasobniky
+//TODO experimentovat se zasobniky
 
 //	INSERT 			terminaly, position, dst, 	mnozstvi, time
 //  Rusko pres NEMECKO
@@ -428,7 +428,7 @@ void testPripojeniUSA(){
 
 void testPripojeniUSALeto(){
 
-	PR = 0.60;
+	PR = 0.80;
 	//celkem rusko posila: 6834, takze musime z usa dovezt: cca 2800
 
 	//
@@ -450,13 +450,14 @@ void testPripojeniUSALeto(){
 //  Norsko
 	insertTerminal(positionTerminal++, CZ, 1, 17);
 
-	//pridat terminaly/pristavy
-//  chorvatsko
-	insertTerminal(positionTerminal++, HU, 970, 6);
-//  Polsko
-	insertTerminal(positionTerminal++, PL, 800, 7);
-//  Ukrajina
-	insertTerminal(positionTerminal++, UA, 984, 6); //SK
+			//pridat terminaly/pristavy
+		//  chorvatsko
+			insertTerminal(positionTerminal++, HU, 970, 6);
+		//  Polsko
+			insertTerminal(positionTerminal++, PL, 800, 7);
+		//  Ukrajina
+			insertTerminal(positionTerminal++, UA, 984, 6); //SK
+
 
 
 //	INSERT 			transporty, position, 	src, 	dst,  	mnozstvi, doba
@@ -464,19 +465,18 @@ void testPripojeniUSALeto(){
 	insertTransport(positiontransportort++, CZ, PL, 67, 7);
 
 
-	//pridat transporty mezi zememi
-	insertTransport(positiontransportort++, PL, CZ, 250, 7);
-	insertTransport(positiontransportort++, HU, SK, 393, 2);
-	insertTransport(positiontransportort++, SK, CZ, 140, 4);
-	insertTransport(positiontransportort++, HU, UA, 200, 13);
+			//pridat transporty mezi zememi
+			insertTransport(positiontransportort++, PL, CZ, 250, 7);
+			insertTransport(positiontransportort++, HU, SK, 393, 2);
+			insertTransport(positiontransportort++, SK, CZ, 140, 4);
+			insertTransport(positiontransportort++, HU, UA, 200, 13);
 
-
-
+//TODO rozumne upravit kapacity
 
 //	INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-	insertStat(position++, "Cz", 553,  1382, 3436000, 	3436000, 29, 0);			//0
+	insertStat(position++, "Cz", 553,  1382, 6006000, 	3436000, 29, 0);			//0
 	insertStat(position++, "Sl", 386,  943,  3020000, 	3020000, 14, 0);			//1
-	insertStat(position++, "Pl", 1638, 2524, 2225000, 	2225000, 708, 10);			//2
+	insertStat(position++, "Pl", 1638, 2524, 4445000, 	2225000, 708, 10);			//2
 	insertStat(position++, "Hu", 578,  1527, 6330000, 	6330000, 223, 39);			//3
 	insertStat(position++, "Ua", 3229, 8535, 31950000, 	 31950000, 2288, 0);			//4
 
@@ -487,7 +487,7 @@ void testPripojeniUSALeto(){
 
 int main() {
 
-	int b = 2;
+	int b = 3;
 //    scanf("%d",&b);
 	if(b == 0) {
 		testSoucasnyStav();
@@ -497,6 +497,9 @@ int main() {
     }
     if(b == 2) {
     	testPripojeniUSA();
+	}
+    if(b == 3) {
+		testPripojeniUSALeto();
 	}
 
 
@@ -517,7 +520,14 @@ int main() {
 //			if(!importFromTerminal(&terminaly[l])){
 //				cout << "Full zasobnik" <<endl;
 //			}
+			if((l >= 8) && (RO == 1)){
+				cout<< "terminal delete src:" << terminaly[l].dst << endl;
+				continue;
+			}
+
 			transakceTerminal(&terminaly[l]);
+
+
 		}
 
 
@@ -544,7 +554,14 @@ int main() {
 //			if(!transportuj(&transporty[k])){
 //				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
 //			}
+
+			if((k >= 2) && (RO == 1)){
+				cout<< "transport delete src:"<<transporty[k].src << "src" << transporty[k].dst << endl;
+				continue;
+			}
+
 			transakceTransport(&transporty[k]);
+
 
 		}
 
