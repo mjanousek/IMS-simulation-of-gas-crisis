@@ -520,6 +520,8 @@ int main() {
 //			if(!importFromTerminal(&terminaly[l])){
 //				cout << "Full zasobnik" <<endl;
 //			}
+
+// TODO dat podminku jen na posledni test 
 			if((l >= 8) && (RO == 1)){
 				cout<< "terminal delete src:" << terminaly[l].dst << endl;
 				continue;
@@ -555,6 +557,7 @@ int main() {
 //				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
 //			}
 
+// TODO dat podminku jen na posledni test
 			if((k >= 2) && (RO == 1)){
 				cout<< "transport delete src:"<<transporty[k].src << "src" << transporty[k].dst << endl;
 				continue;
