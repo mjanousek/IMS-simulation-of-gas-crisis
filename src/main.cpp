@@ -22,6 +22,7 @@ ukr 	3139 	0 		2288 		5882 		3195000
 #include <iterator>
 #include <stdio.h>
 #include <vector>
+#include <string.h>
 
 using namespace std;
 
@@ -73,6 +74,13 @@ typedef struct Stat{
 	long kapacita = 0;
 }sCountry;
 
+typedef struct SStatistika{
+	//jednotky 100 m^3
+	long pocZasoba = 0;
+	int dniNazivu = 0;
+	bool nazivu = true;
+}sStatistika;
+
 //vektor transakci
 vector<sTransakce> transakce;
 
@@ -87,6 +95,47 @@ int position = 0;
 int positiontransportort = 0;
 int positionTerminal = 0;
 
+sStatistika statistika[5];
+
+void printHelp(){
+	printf("Nápověda:\n"
+			"\n"
+			"pro spusteni zadejte parametr test=n\n"
+			"kde n znaci typ testu (n je v rozmezi 1 - 5)\n"
+			""
+			"priklad spusteni:\n"
+			"./IMS test=2\n\n");
+}
+
+void printStat(){
+	printf("==================\n"
+		   "==  Statistika  ==\n");
+	for (int x = 0; x < 5; ++x) {
+		printf("------------------\n");
+			cout << "jmeno: " << staty[x].jmeno<<endl;
+
+			cout << "poc.   zasoba: "<<statistika[x].pocZasoba <<endl;
+//			cout << "kon.   zasoba: "<<staty[x].zasoba <<endl;
+			cout << "kon.   zasoba: "<<staty[x].zasoba<<endl;
+
+			long r = - statistika[x].pocZasoba + staty[x].zasoba;
+			if(r < 0){
+				cout << "zasoba-rozdil:" <<r<<endl;
+			}else{
+				cout << "zasoba-rozdil:+" <<r<<endl;
+			}
+			if(statistika[x].nazivu){
+
+			}else{
+				cout << "zasoby vycerpany po "<<statistika[x].dniNazivu/24/365<<" letech, "
+						<<(statistika[x].dniNazivu/24)%365<<" dnech, "<<statistika[x].dniNazivu%24<<" hodinach"<<endl;
+			}
+
+
+	}
+	printf("==================\n");
+}
+
 void insertStat(int position, string jmeno, long sportrebaLeto, long sportrebaZima, long kapacita, long zasoba, long produkce, long sExport){
 
 	sCountry pom;
@@ -98,6 +147,7 @@ void insertStat(int position, string jmeno, long sportrebaLeto, long sportrebaZi
 	pom.sExport = sExport;
 	pom.kapacita = kapacita;
 
+	statistika[position].pocZasoba = zasoba;
 	staty[position] = pom;
 }
 
@@ -161,7 +211,9 @@ bool transakceTransport(sTransport * transport){
 		return true;
 	}else{
 //		cout<<"transakceTransport2"<<endl;
-		cout << staty[transport->src].jmeno << ":Nelze provest transport, v zasobniku je malo plynu."<<endl;
+		if(statistika[transport->src].nazivu){
+			cout << staty[transport->src].jmeno << ":Nelze provest transport, v zasobniku je malo plynu."<<endl;
+		}
 		return false;
 	}
 }
@@ -322,11 +374,11 @@ void testZasobnikyDoBudoucna(){
 
 
 //		INSERT staty, position, jmeno, 		sportrebaL, sportrebaZ,  velZasob, zasoby,  produkce
-		insertStat(position++, "Cz", 553,  1382, 3436000, 3436000, 29, 0);			//0
-		insertStat(position++, "Sl", 386,  943, 3020000, 3020000, 14, 0);			//1
-		insertStat(position++, "Pl", 1638, 2524, 2225000, 2225000, 708, 10);		//2
-		insertStat(position++, "Hu", 578,  1527, 6330000, 6330000, 223, 39);			//3
-		insertStat(position++, "Ua", 3229, 8535, 31950000, 31950000, 2288, 0);
+		insertStat(position++, "Cz", 553,  1382, 8255000, 8255000, 29, 0);			//0
+		insertStat(position++, "Sl", 386,  943, 5500000, 5331000, 14, 0);			//1
+		insertStat(position++, "Pl", 1638, 2524, 8680000, 8680000, 708, 10);		//2
+		insertStat(position++, "Hu", 578,  1527, 8085500, 8085500, 223, 39);			//3
+		insertStat(position++, "Ua", 3229, 8535, 26340000, 26340000, 2288, 0);
 
 }
 
@@ -485,69 +537,93 @@ void testPripojeniUSALeto(){
 
 
 
-int main() {
+int main(int argc, char * argv[]) {
 
-	int b = 3;
+	if(argc != 2){
+		cerr << "Zadali jste spatny pocet prametru, pouzijte --help pro napovedu."<<endl;
+		return 1;
+	}
+
+	//nastaveni testu
+	int b = 0;
+
+	if(strcmp(argv[1], "--help") == 0){
+		printHelp();
+		return 0;
+	}else if(strcmp(argv[1], "test=1") == 0){
+		cout<<"Test1"<<endl;
+		b = 1;
+	}else if(strcmp(argv[1], "test=2") == 0){
+		cout<<"Test2"<<endl;
+		b = 2;
+	}else if(strcmp(argv[1], "test=3") == 0){
+		cout<<"Test3"<<endl;
+		b = 3;
+	}else if(strcmp(argv[1], "test=4") == 0){
+		cout<<"Test4"<<endl;
+		b = 4;
+	}else if(strcmp(argv[1], "test=5") == 0){
+		cout<<"Test5"<<endl;
+		b = 5;
+	}else{
+		cerr << "Zadali jste spatny pocet prametru, pouzijte --help pro napovedu."<<endl;
+		return 1;
+	}
+
 //    scanf("%d",&b);
-	if(b == 0) {
+	if(b == 1) {
 		testSoucasnyStav();
 	}
-	if(b == 1) {
+	if(b == 2) {
     	testOdpojeniRuska();
     }
-    if(b == 2) {
+    if(b == 3) {
     	testPripojeniUSA();
 	}
-    if(b == 3) {
+    if(b == 4) {
 		testPripojeniUSALeto();
+    }
+    if(b == 5) {
+    	testZasobnikyDoBudoucna();
 	}
-
+//    testZasobnikyDoBudoucna()
 
 
 	int i = 0;
-	while(i < 5*365*24){
-
-//		if((i % (24)) == 0){
+	bool con = true;
+	while((i < 5*365*24) && con){
+		con = false;
+		if((i % (24 * 30)) == 0){
 			cout<< "---------------" <<endl;
 			printTime(i);
-//		}
+		}
 		sCountry a;
 
-		//tady vlozit z terminalu nebo ze zdroju
-
-
 		for (int l = 0; l < positionTerminal; l++) {
-//			if(!importFromTerminal(&terminaly[l])){
-//				cout << "Full zasobnik" <<endl;
-//			}
-
-// TODO dat podminku jen na posledni test 
-			if((l >= 8) && (RO == 1)){
-				cout<< "terminal delete src:" << terminaly[l].dst << endl;
+		// TODO dat podminku jen na posledni test
+			if((l >= 8) && (RO == 1) && (b == 4)){
 				continue;
 			}
-
 			transakceTerminal(&terminaly[l]);
-
-
 		}
 
 
 		for (int j = 0; j < position; j++) {
-
 			if(!spotrebuj(&staty[j]) || !exportuj(&staty[j])){
-				cout << "Zasoba byla spotrebovana u " << staty[j].jmeno << endl;
-				//odstranit stat ze struktury statu
+				if(statistika[j].nazivu){
+					cout << "Zasoba byla spotrebovana u " << staty[j].jmeno << endl;
+				}
 			}
 //			if((i % (24)) == 0){
-				cout << "stat:" << staty[j].jmeno << " stav:" << staty[j].zasoba << endl;
+//				cout << "stat:" << staty[j].jmeno << " stav:" << staty[j].zasoba << endl;
 //			}
-			if(staty[j].zasoba == 0) {
+			if((staty[j].zasoba == 0) && statistika[j].nazivu) {
 				staty[j].zasoba = 0;
-			    int b;
-			    scanf("%d",&b);
-			    staty[j].zasoba = 99999999999999;
+				statistika[j].nazivu = false;
+			    statistika[j].dniNazivu = i;
 			}
+			if(statistika[j].nazivu)
+				con = true;
 
 		}
 
@@ -556,10 +632,8 @@ int main() {
 //			if(!transportuj(&transporty[k])){
 //				cout << "Zasoba byla spotrebovana nebo plny zasobnik" <<endl;
 //			}
-
 // TODO dat podminku jen na posledni test
-			if((k >= 2) && (RO == 1)){
-				cout<< "transport delete src:"<<transporty[k].src << "src" << transporty[k].dst << endl;
+			if((k >= 2) && (RO == 1) && (b == 4)){
 				continue;
 			}
 
@@ -575,5 +649,7 @@ int main() {
 		++i;
 
 	}
+
+	printStat();
 	return 0;
 }
