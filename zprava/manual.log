@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.6)  8 DEC 2014 15:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.6)  8 DEC 2014 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -680,16 +680,15 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                removing `\textasciicaron' on input line 619.
 
 [12]
-Overfull \hbox (124.50252pt too wide) in paragraph at lines 630--632
-[]\OT1/cmr/m/n/10.95 P. Pe-ri-n-ger: p^^Tredn^^Sa^^Tsky p^^Tredm^^Tetu Mo-de-lo
-v^^San^^S^^P a si-mu-lace https://www.fit.vutbr.cz/study/courses/IMS/public/pre
-dnasky/IMS.pdf 
+Underfull \hbox (badness 10000) in paragraph at lines 634--635
+[]\OT1/cmr/m/n/10.95 System de-ve-lo-p-ment map [on-line]. [cit. 2014-12-07]. D
+o-stupn^^Se z:
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 636--638
-[]\OT1/cmr/m/n/10.95 Gas LNG Eu-rope. [on-line]. [cit. 2014-12-07].Dostupn^^Se 
-z:http://www.gie.eu/down-
+[]\OT1/cmr/m/n/10.95 Gas LNG Eu-rope. [on-line]. [cit. 2014-12-07]. Do-stupn^^S
+e z: http://www.gie.eu/down-
  []
 
 
@@ -730,7 +729,7 @@ amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on manual.pdf (13 pages, 399497 bytes).
+Output written on manual.pdf (13 pages, 399558 bytes).
 PDF statistics:
  384 PDF objects out of 1000 (max. 8388607)
  347 compressed objects within 4 object streams
