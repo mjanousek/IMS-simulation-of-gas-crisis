@@ -72,31 +72,38 @@ na zemním plynu dováženém z Ruska.
 
 \subsubsection{Hlavní zdroje informací}
 Za hlavní zdroj informací byl použit elektronický sborník Natural Gas Information \cite{IEA}\footnote{konkrétně ten vydaný v roce 2014},
-který je každoročně vydáván \textit{Mezinárodní energetickou agenturou}\footnote{viz. http://www.iea.org/}.
+který je každoročně vydáván \textit{Mezinárodní energetickou agenturou}\footnote{viz. \url{www.iea.org}}.
 Tento elektronický sborník se zabívá požadavky a zásobami plynu v zemích po celém světě.
 
 
-Dalším důležitým zdrojem informací byla webová stránka asociace \textit{Gas Infrastructure Europe (GIE)}\footnote{viz. http://www.gie.eu.com/}.
+Dalším důležitým zdrojem informací byla webová stránka asociace \textit{Gas Infrastructure Europe (GIE)}\footnote{viz. \url{www.gie.eu.com}}.
 
 \subsection{Validace modelu}
 
 %kapitola 1.2: V jakém prostředí a za jakých podmínek probíhalo experimentální ověřování validity modelu – pokud čtenář/zadavatel vaší zprávy neuvěří ve validitu vašeho modelu, obvykle vaši práci odmítne už v tomto okamžiku.
 
-Ověřování modelu probíhalo experimentování s modelem a to v rámci různých testů. Výsledky těchto testů byly srovnávány s dostupnými informacemi a také s výsledky, které byly dosaženy analitickými metodami. Jako kontrolní informace byla využita studie na téma \textit{Embargo ruského plynu}.\footnote{viz. http://www.regjeringen.no/upload/OED/pdf\%20filer/Brussel/Hoeffler{\_}Gas{\_}Embargo.pdf}
+Ověřování modelu probíhalo experimentování s modelem a to v rámci různých testů.
+Výsledky těchto testů byly srovnávány s dostupnými informacemi a také s výsledky,
+které byly dosaženy analitickými metodami.
+Jako kontrolní informace byla využita studie na téma \textit{Embargo ruského plynu}\footnote{Dostupné na \url{www.regjeringen.no/upload/OED/pdf\%20filer/Brussel/Hoeffler_Gas_Embargo.pdf}}.
 Výsledky testů byly také srovnávány napříč mezi sebou, což neověřilo správnost celého modelu, ale shodnosti jednotlivých komponent.
 
 \subsection{Zadání projektu}
 
-
 Oficiální zadání projektu je k dispozici na stránkách \url{http://perchta.fit.vutbr.cz:8000/vyuka-ims/34}.
 
 \begin{quotation}
-\uv{Navrhněte diskrétní model produkce, spotřeby a přepravy plynu v zemích okolo České republiky (Polsko, ČR, Slovensko, Maďarsko, Ukrajina).
-Za místa produkce považujte místa aktuálních (a uvažovaných) přístavních terminálů na LNG v Evropě, podzemní zásobníky v daných zemí (včetně jejich kapacity) a Rusko.
-Každou zemi považujte v modelu za jeden uzel produkce a spotřeby (neuvažují se místní rozvody plynu). Modelujte současnou přepravní síť mezi uzly.
+\uv{Navrhněte diskrétní model produkce, spotřeby a přepravy plynu v zemích okolo České republiky
+(Polsko, ČR, Slovensko, Maďarsko, Ukrajina).
+Za místa produkce považujte místa aktuálních (a uvažovaných) přístavních terminálů na LNG v Evropě,
+podzemní zásobníky v daných zemí (včetně jejich kapacity) a Rusko.
+Každou zemi považujte v modelu za jeden uzel produkce a spotřeby (neuvažují se místní rozvody plynu).
+Modelujte současnou přepravní síť mezi uzly.
 Síť dle potřeb rozšiřte o další uzly a země. Navrhněte a zdůvodněte přepravní doby mezi uzly v jednotce množství za hodinu
-(př. uzel Rusko produkuje do přepravního kanálu na Ukrajinu X množství každou hodinu. Přepravní doba z uzlu Rusko do uzlu Ukrajina je Y hodin.).
-Zkoumejte dostupnost plynu v uzlech v různých obdobích roku (zimní spotřeba, letní spotřeba) v různých scénářích (zprovoznění terminálu LNG pro dovoz z USA,
+(př. uzel Rusko produkuje do přepravního kanálu na Ukrajinu X množství každou hodinu.
+Přepravní doba z uzlu Rusko do uzlu Ukrajina je Y hodin.).
+Zkoumejte dostupnost plynu v uzlech v různých obdobích roku (zimní spotřeba, letní spotřeba)
+v různých scénářích (zprovoznění terminálu LNG pro dovoz z USA,
 Ukrajina přeruší transportní cestu, Rusko přestane dodávat apod.).}
 \end{quotation}
 
@@ -126,6 +133,8 @@ Zjišťování dostatečné kapacity zásobníků plynu v jednotlivých zemích
 tak, aby v případě plynové krize vystačily po dobu jednoho roku.
 \end{enumerate}
 
+\newpage
+
 \section{Rozbor tématu a použitých metod/technologií}
 
 %Shrnutí všech podstatných faktů, které se týkají zkoumaného systému (co možná nejvěcnějším a technickým (ideálně formálně matematickým) přístupem, žádné literární příběhy). Podstatná fakta o systému musí být zdůvodněna a podepřena důvěryhodným zdrojem (vědecký článek, kniha, osobní měření a zjišťování). Pokud budete tvrdit, že ovce na pastvě sežere dvě kila trávy za den, musí existovat jiný (důvěryhodný) zdroj, který to potvrdí. Toto shrnutí určuje míru důvěryhodnosti vašeho modelu (nikdo nechce výsledky z nedůvěryhodného modelu). Pokud nebudou uvedeny zdroje faktů o vašem systému, hrozí ztráta bodů.
@@ -136,17 +145,12 @@ tak, aby v případě plynové krize vystačily po dobu jednoho roku.
 
 %kapitola 2.1: Popis použitých postupů pro vytvoření modelu a zdůvodnění, proč jsou pro zadaný problém vhodné. Zdůvodnění může být podpořeno ukázáním alternativního přístupu a srovnáním s tím vaším. Čtenář musí mít jistotu, že zvolené nástroje/postupy/technologie jsou ideální pro řešení zadaného problému (ovšem, "dělám to v Javě, protože momentálně Java frčí..." nemusí zadavatele studie uspokojit).
 
-%\vline
-
 Pro implementaci byl zvolen jazyk C++ a to ve variantě bez knihoven podporujících simulaci.
 Důvodem tohoto rozhodnutí byla rychlost spustitelného programu a také to,
 že veškeré události v modelu se vykonávají diskrétně v intervalech po jedné hodině.
 Modelového času \cite[str,21]{IMS} pro účeli tohoto modelu lze tedy docílit
 jednoduše vykonáním všech
 událostí se stejným počátečním časem v jedné iteraci cyklu.
-
-
-%\vline
 
 \subsection{Popis původu použitých metod/technologií}
 %kapitola 2.2: Popis původu použitých metod/technologií (odkud byly získány (odkazy), zda-li jsou vytvořeny autorem) - převzaté části dokumentovat (specificky, pokud k nim přísluší nějaké autorské oprávnění/licence). Zdůvodnit potřebu vytvoření vlastních metod/nástrojů/algoritmů. Ve většině případů budete přebírat již navržené metody/algoritmy/definice/nástroje a je to pro školní projekt typické. Stejně tak je typické, že studenti chybně vymýšlí již hotové věci a dojdou k naprostému nesmyslu - je třeba toto nebezpečí eleminovat v tomto zdůvodnění.
@@ -167,8 +171,8 @@ Pro přepravu se používá potrubí (kratší vzdálenosti) a nebo je
 přepravován loděmi přes moře (velké vzdálenosti).
 
 Pro přeprepravu přes moře je plyn převeden do formy CNG (stlačený zemní plyn) nebo
-LNG (zkapalněný zemní plyn) tímto je docíleno zmenšení objemu zemního plynu \footnote{V případě LNG cca 600x}. V cílovém terminálu přečerpán do zásobníků, postupně je plyn odpařován a dodáván do plynovodního systému.
-
+LNG (zkapalněný zemní plyn) tímto je docíleno zmenšení objemu zemního plynu \footnote{V případě LNG cca 600x}.
+V cílovém terminálu přečerpán do zásobníků, postupně je plyn odpařován a dodáván do plynovodního systému.
 
 \vline
 
@@ -204,10 +208,33 @@ Jednotky mcm ($m^3 * 10^6$).  Zdroj \cite{IEA}
 \end{center}
 \end{table}
 
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|r|r|r|}
+    \hline
+    Stát 			& Celkem		& Rusko & Norsko & Německo 	& Česko & Maďarsko & Kazachstán\\
+    \hline 
+    Česká republika	& 8 479		& 8 475	& 4		& 		&			&		&\\ 
+    Slovensko 		& 5 579		& 5 509	& 		& 		&			&		&\\
+    Maďarsko 		& 8 176		& 8 176 &		&		&			&		&\\
+    Polsko 			& 12 473 	& 9 615 	& 		& 2 267	& 584		&		&\\
+    Ukrajina 		& 27 495		& 25 840	& 		&		&			& 1108	& 547\\ \hline
+\end{tabular}
+\caption{Import podle zemí původu  zemního plynu pro jednotlivé zkoumané země za jeden rok.}
+Jednotky mcm ($m^3 * 10^6$).  Zdroj \cite{IEA}
+\label{importrocni}
+\end{center}
+\end{table}
+
+
+\newpage
+
 Tyto hodnoty nebyly vhodné do modelu, jelikož neodpovídali
 zvolenému modelovému času jedna hodina. 
 Vzhledem k tomuto nedostatku bylo potřeba hodnoty převést na jednotky přepravené za hodinu.
-Přepočítané hodnoty viz tabulka \ref{tabulka2}. 
+
+Přepočítané hodnoty pro tabulku \ref{rocni} jsou vypsány v tabulce \ref{denni}
+a přepočítané hodnoty pro tabulku \ref{importrocni} jsou uvedeny v tabulce \ref{importdeni}. 
 
 \begin{table}[h!]
 \begin{center}
@@ -222,13 +249,31 @@ Přepočítané hodnoty viz tabulka \ref{tabulka2}.
     Ukrajina 		& 3 139	 	& -		& 2288	& 5 882 \\ \hline
 \end{tabular}
 \caption{Import, export produkce a spotřeba jednotlivých zkoumaných zemí za jednu hodinu.}
-
 Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$)\footnotemark.
-\label{tabulka2}
+\label{denni}
 \end{center}
 \end{table}
 \footnotetext{Převod z hodnot uvedených v  tabulce výše tabulce.
 Převod: původní hodnota/365/24.}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|r|r|r|}
+    \hline
+    Stát 			& Celkem	& Rusko & Norsko & Německo 	& Česko & Maďarsko & Kazachstán\\
+    \hline 
+    Česká republika	& 968		& 967	& 1		& 		&			&		&\\ 
+    Slovensko 		& 637		& 629	& 		& 		&			&		&\\
+    Maďarsko 		& 933		& 933 	&		&		&			&		&\\
+    Polsko 			& 1 424	 	& 1 097 	& 		& 259	& 67			&		&\\
+    Ukrajina 		& 3 139		& 2 949	& 		&		&			& 126	& 62\\ \hline
+\end{tabular}
+\caption{Import podle zemí původu  zemního plynu pro jednotlivé zkoumané země za jednu hodinu.}
+Jednotky tcm ($m^3 * 10^3$).  Zdroj \cite{IEA}
+\label{importdeni}
+\end{center}
+\end{table}
+
 
 Po tomto kroku byly téměř všechny hodnoty připraveny na vložení do modelu.
 Poslední hodnotou, kterou bylo potřeba modifikovat byla spotřeba a to tak,
@@ -262,6 +307,11 @@ Veškeré hodnoty jsou uvedeny v jednotkách tcm ($m^3 * 10^3$).
 \end{center}
 \end{table} 
 
+
+\vspace{5cm}
+
+
+
 \subsubsection{Zásobníky zemního plynu}\label{zasobniky}
 
 \begin{table}[h!]
@@ -285,7 +335,6 @@ Veškeré hodnoty jsou uvedeny v jednotkách mcm ($m^3 * 10^6$).
 
 Hodnoty jsou opět získáný z \cite{IEA}, rovněž zajímavým zdrojem je stránka \url{http://transparency.gie.eu/}
 kde jsou každý den aktualizovány statistiky zásobníků (zaplnění, odběr, kapacita,...)
-
 
 \subsubsection{Přepravní trasy}\label{Preprava}
 
@@ -340,19 +389,19 @@ Hodnoty změřené za pomoci webové stránky \textit{Mapy.cz}\footnotemark
 \end{center}
 \end{table}
 
-\footnotetext{http://www.mapy.cz/}
+\footnotetext{www.mapy.cz}
 
 Přepravní rychlost zemního plynu byla zvolena hodnota 20 m/s získaná ze zdroje
 \cite{engineering}.
-Tato hodnota je v uvedeném zdroji označena jako doporučená 
-proto, že se jedná o nejvyšší rychlost toku zemního plynu,
+Tato hodnota je v uvedeném zdroji označena jako doporučená,
+protože se jedná o nejvyšší rychlost toku zemního plynu,
 která nezvyšuje riziko koroze na  potrubí v němž je zemní plyn přepravován.
 V modelu je tato rychlost převedena na km/h, tedy na \textbf{72 km/h}, a je použita pro
 odhadované zpoždení plynu z místa těžby na místa spotřeby.
 
 Hodnoty získané kombinací hodnot z tabulky \ref{plynovody} a výše zmiňované
 doporučené rychlosti 72 km/h lze získat přepravní čas zemního plynu pro jednotlivé
-plynovody(viz tabulka \ref{plynovodyprevod}).
+plynovody (viz tabulka \ref{plynovodyprevod}).
 
 Obdobně lze zíkat přepravní čas mezi uzly reprezentujícími jednotlivé země.
 V tomto případě jsou použity hodnoty z tabulky \ref{staty}. 
@@ -362,14 +411,14 @@ Výsledné hodnoty jsou vypsány v tabulce  \ref{statyprevod}.
 \begin{center}
 \begin{tabular}{|l|l|l|r|}
     \hline
-    Název 			& Začátek (místo těžby)	& Konec (cílové státy) 		& Doba přepravy \\
+    Název 			& Začátek (místo těžby)		& Konec (cílové státy) 		& Doba přepravy \\
     \hline 
-    Yamal			& poloostrov Jamal, Rusko & Polsko				& 47 hodin\\ 
-    North stream 	& poloostrov Jamal, Rusko & Německo			& 60 hodin\\
-    Europipe I. 		& Severní moře, Norsko 	& Německo  			& 9 hodin\\
-    Soyuz 			& poloostrov Jamal, Rusko & Ukrajina 			& 51 hodin\\
-					&						& Slovensko			& 74 hodin\\ 
-	Soyuz 			& Atyrau, Kazachstán	 	& Ukrajina			& 42 hodin\\	
+    Yamal			& poloostrov Jamal, Rusko 	& Polsko				& 47 hodin\\ 
+    North stream 	& poloostrov Jamal, Rusko 	& Německo			& 60 hodin\\
+    Europipe I. 		& Severní moře, Norsko 		& Německo  			& 9 hodin\\
+    Soyuz 			& poloostrov Jamal, Rusko 	& Ukrajina 			& 51 hodin\\
+					&							& Slovensko			& 74 hodin\\ 
+	Soyuz 			& Atyrau, Kazachstán	 		& Ukrajina			& 42 hodin\\	
     \hline
 \end{tabular}
 \caption{Čas potřebný k překonání uvažovaných plynovodů.} 
@@ -397,6 +446,7 @@ Veškeré hodnoty jsou uvedeny v jednotkách hodina.
 \end{center}
 \end{table}
 
+\newpage
 \subsubsection{Lodní terminály na LNG}\label{lng}
 
 Jedním z důvodů vzniku celé této práce je simulace možnosti převozu zkapalněného zemního
@@ -431,9 +481,9 @@ Zdroje \cite{lngeurope},\cite{lngkrk} a  \cite{lngukrajina}
 
 Současná síť plynovodů mezi zkoumanými státy je schopná pojmout navýšení kapacity
 \footnote{Kapacity možno vyčíst z
-http://www.entsog.eu/public/uploads/files/maps/transmissioncapacity/2014/\\
-ENTSOG{\_}140612{\_}CAP{\_}JUNE2014.pdf
-a průtok například z interaktivní mapky http://www.iea.org/gtf/index.asp.}
+\url{www.entsog.eu/public/uploads/files/maps/transmissioncapacity/2014/
+ENTSOG_140612_CAP_JUNE2014.pdf}
+a průtok například z interaktivní mapky \url{www.iea.org/gtf/index.asp.}}
 přepravy plynu v důsledku zprovoznění přístavních terminálů na LNG a tudíž je pro potřeby
 modelu dostačující,
 ale vzhledem k narůstající spotřebě zemního plynu by bylo z dlouhodobého hlediska vhodné 
@@ -442,24 +492,53 @@ přepravní síť rozšířit.
 Pro účely modelu bylo potřeba dodat informaci o možnosti dopravy zemního plynu
 z terminálu na ostrově Krk (ostatní zvolené terminály leží v modelovaných zemích).
 Přepravní trasa byla vybrána k nejbližší zemi tedy Maďarsku a to ze vzdáleností 
-440 km\footnote{Hodnota změřené za pomoci webové stránky \textit{Mapy.cz} www.mapy.cz} a přepravním zpožděním 6 hodin.
+440 km\footnote{Hodnota změřené za pomoci webové stránky \textit{Mapy.cz} \url{www.mapy.cz}}
+a přepravním zpožděním 6 hodin.
 
-
+\newpage
 
 \section{Koncepce - modelářská témata}
 
 %Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
-Model rozvodů plynu po modelované země, vychází z informací, které jsou uvedeny v \ref{Rozbor}. Jako místa spotřeby byly zvoleny hlavní města jednotlivých zemí (viz. \ref{Preprava}) a přepravní trasy byly modelovány pomocí údajů délky a přepravní doby (zanedbána poloha a tvar). 
 
-Po spuštění aplikace trvá určitou dobu\footnote{Doba přepravy mezi místem produkce a jednotlivou zemí} než se plyn dostane k místu spotřeby. Tento fakt může být zanedbán, jeliž neovlivní výsledky navržených scénářů. (Pokud by byla potřeba tuto skutečnost nezanedbávat, docílilo byse toho například zvýšením počátečních zásob zemí o hodnotu, která se spotřebuje, než dojde první dodávka plynu.) 
 
 \subsection{Způsob vyjádření konceptuálního modelu}
-kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
+%kapitola 3.1: Způsob vyjádření konceptuálního modelu musí být zdůvodněn (na obrázku xxx je uvedeno schéma systému, v rovnicích xx-yy jsou popsány vazby mezi ..., způsob synchronizace procesů je na obrázku xxx s Petriho sítí).
+
+Model rozvodů plynu po modelované země, vychází z informací, které jsou uvedeny v \ref{Rozbor}.
+Jako místa spotřeby byly zvoleny hlavní města jednotlivých zemí (viz. \ref{Zeme})
+a přepravní trasy byly modelovány pomocí údajů délky a přepravní doby, poloha i tvar přepravní sítě byla zanedbána
+(více informací v kapitole \ref{Preprava}). 
+Abstraktní schéma systému je možné nalézt na obrázku \ref{evropa}.
+
 \subsection{Formy konceptuálního modelu}
-kapitola 3.2: Formy konceptuálního modelu (důraz je kladen na srozumitelnost sdělení). Podle potřeby uveďte konkrétní relevantní:
-obrázek/náčrt/schéma/mapa (možno čitelně rukou)
-matematické rovnice - u některých témat (např. se spojitými prvky, optimalizace, ...) naprosto nezbytné. Dobré je chápat, že veličiny (fyzikální, technické, ekonomické) mají jednotky, bez kterých údaj nedává smysl.
-stavový diagram (konečný automat) nebo Petriho síť - spíše na abstraktní úrovni. Petriho síť nemá zobrazovat výpočty a přílišné detaily. Pokud se pohodlně nevejde na obrazovku, je nepoužitelná. Možno rozdělit na bloky se zajímavými detaily a prezentovat odděleně abstraktní celek a podrobně specifikované bloky (hierarchický přístup).
+%kapitola 3.2: Formy konceptuálního modelu (důraz je kladen na srozumitelnost sdělení). Podle potřeby uveďte konkrétní relevantní: obrázek/náčrt/schéma/mapa (možno čitelně rukou) matematické rovnice - u některých témat (např. se spojitými prvky, optimalizace, ...) naprosto nezbytné. Dobré je chápat, že veličiny (fyzikální, technické, ekonomické) mají jednotky, bez kterých údaj nedává smysl. stavový diagram (konečný automat) nebo Petriho síť - spíše na abstraktní úrovni. Petriho síť nemá zobrazovat výpočty a přílišné detaily. Pokud se pohodlně nevejde na obrazovku, je nepoužitelná. Možno rozdělit na bloky se zajímavými detaily a prezentovat odděleně abstraktní celek a podrobně specifikované bloky (hierarchický přístup).
+
+Každý stát v modelu je popsán jedním uzlem, který reprezentuje produkci, spotřebu, import a export daného státu.
+Uzly států jsou doplněny propoji symbolizujícími existující plynovodní síť.
+Pomocí propojů jsou uzly států spojeny s místy těžby a také jednotlivě mezi sebou
+(pokud mezi danými dvěma státy nějaký reálný spoj existuje).
+Mezi dvěma uzly států je v jednom směru vždy jeden spoj,
+který odpovídá svojí kapacitou celkové kapacitě přepravy mezi danými zeměmi.
+
+Na obrázku \ref{evropa} se nachází abstraktní schéma systému, na kterém jsou vyobrazeny orientačně jednotlivé uzly států
+a propoje mezi nimi (propoje neodpovídají reálnému umístění plynovodů).
+
+\begin{figure}[h!]
+\begin{center}
+\scalebox{0.6}{\includegraphics{Geo-map-europe-contour-map.jpg}}
+\end{center}
+\caption{Abstraktní schéme systému.}
+\label{evropa}
+\end{figure}
+
+V modelu dochází k zahájení zásobování jednotlivých zemí až po určité době běhu
+programu\footnote{Doba přepravy mezi místem produkce a jednotlivou zemí}.
+Důvodem je zpoždění vyvolané prvnotní přepravou plynu z místa produkce do místa spotřeby.
+Tento fakt může být zanedbán, jelikož neovlivní výsledky navržených
+scénářů\footnote{Pokud by byla potřeba tuto skutečnost nezanedbávat,
+docílilo by se toho například zvýšením počátečních zásob zemí o hodnotu,
+která se spotřebuje, než dojde první dodávka plynu.}.
 
 \section{Koncepce - implementační témata}
 
@@ -472,7 +551,7 @@ Popište abstraktně architekturu vašeho programu, princip jeho činnosti, výz
 %kapitola 4.1: Minimálně je nutno ukázat mapování abstraktního (koncept.) modelu do simulačního (resp. simulátoru). Např. které třídy odpovídají kterým procesům/veličinám a podobně.
 
 Vzhledem k jednoduchosti modelu a použití
-disktrétního času byla vybrána koncepce,
+disktrétního času\cite[str,22]{IMS} byla vybrána koncepce,
 kdy jádro programu tvoří cyklus \texttt{while}, ve kterém se
 vykonávají akce transportu, spotřeby, exportu a importu.
 Odlišnost v jednotlivých typech simulací je ve funkcích
@@ -485,37 +564,48 @@ Jednotlivé struktury se liší svými parametry.
 Například struktura reprezentující terminál obsahuje položky pro reprezentaci cílového uzlu v síti,
 množství přenášeného plynu a dobu přenosu.
 Oproti tomu struktura reprezentující transport obsahuje navíc ještě položku reprezentující zdroj.
-Struktura určená pro reprezentaci států (míst spotřeby), pak obsahuje položky pro velikost zásobníku,
-zásobu plynu, spotřebu a podobně.
+Struktura určená pro reprezentaci států (míst spotřeby), pak obsahuje položky pro maximální velikost zásobníku,
+aktuální stav plny, spotřebu a  produkci.
 
 \subsection{Vektor transakcí}
 
-Protože není využito simlačních knihoven, dochází k absenci kalendáře událostí.
-Přesto, že jsou zpracovávány události po každé hodině modelového času,
+Vzhledem k tomu, že není využito simlačních knihoven, dochází k absenci kalendáře událostí.
+Přestože jsou zpracovávány události po každé hodině modelového času,
 bylo nutné implementovat způsob zpracování událostí v určitém čase.
 Pro tyto účely byl vytvořen \textbf{vektor transkací}, do něhož jsou ukládány události,
 které se mají vykonat až po určitém čase.
-Tyto události se týkají přenosu zemního plynu.
+Tyto události se týkají přenosu, spotřeby a produkce zemního plynu.
 Nejprve je potřeba plyn odečíst ze zásob odesílající země a až po nějakém čase mají být uloženy do zásobníku v cílové zemi.
 
-Obsah vektoru tvoří struktury s položkami reprezentujícími cílovou zemi, čas přenosu a množství zemího plynu, které je přenášeno. Tento vektor je po každé hodině modelového času procházen a časy u jednotlivých záznamů jsou dekrementovány. Pokud čas dosáhne hodnoty 0, je tato transakce dokončena\footnote{Plyn je uložen v zásobníku cílové stanice a záznam je z vektoru transakcí odstraněn}. 
+Obsah vektoru tvoří struktury s položkami reprezentujícími cílovou zemi,
+čas přenosu a množství zemího plynu, které je přenášeno.
+Tento vektor je po každé hodině modelového času procházen a časy u jednotlivých záznamů jsou dekrementovány.
+Pokud čas dosáhne hodnoty 0, je tato transakce dokončena\footnote{Plyn je uložen v zásobníku cílové stanice a záznam je z vektoru transakcí odstraněn}. 
 
 \subsection{Zpracování akcí}
 
-Zpracování akcí se dá rozčlenit do několika částí, které se opakují. Nejprve se vloží informace o importu plynu od přístavních terminálů do vektoru transakcí, poté se spotřebuje plyn a exportuje se do zemí mimo modelovaný systém. Pak se vloží do vektoru transakcí informace o přesunu plynu mezi jednotlivými zeměmi a odečte se dané množství od zásob zdrojové země. Na závěr se provede průchod vektorem transakcí a transakce, jež mají být provedeny v aktuálním čase se provedou\footnote{funkce \texttt{transakceCheck()}}. 
+Zpracování akcí se dá rozčlenit do několika částí, které se opakují.
+Nejprve se vloží informace o importu plynu od přístavních terminálů do vektoru transakcí,
+poté se spotřebuje plyn a exportuje se do zemí mimo modelovaný systém.
+Následovně se vloží do vektoru transakcí informace o přesunu plynu mezi jednotlivými zeměmi
+a odečte se dané množství od zásob zdrojové země.
+
+Na závěr se provede průchod vektorem transakcí a transakce,
+jež mají být provedeny v aktuálním čase se provedou\footnote{funkce \texttt{transakceCheck()}}. 
 
 \subsection{Modelový čas}
 
 Modelový čas byl zvolen jedna hodina a tato jedna hodina odpovídá jedné iteraci hlavního cyklu while.
 
-Aby model odpovídal reálnému světu, bylo potřeba zanést střídání letního a zimního období
-\footnote{letní období duben-září, zimní období říjen-březen}.
+Aby model odpovídal reálnému světu, bylo do něj potřeba zanést střídání letního a zimního období
+\footnote{letní období duben až září, zimní období říjen až březen}.
 Důvodem tohoto požadavku byla značná rozdílnost ve spotřebě zemního plynu jednotlivých míst spotřeby
 v různých obdobích (v letním období menší spotřeba, v zimním větší).
 Změny období bylo docíleno pomocí počítadla cyklů, jehož hodnota se v každé iteraci porovnává 
 s aktuální hodnotou značící začátek nového období, pokud jsou hodnoty totožné 
 je hodnota značící začátek nového období navýšena o hodnotu 182\footnote{hodnota 182 značí půlku jednoho roku}
 a spotřeba jednotlivých států je přepnuta na hodnotu odpovídající danému období.
+
 Inicializační hodnota hodnoty značící začátek nového období je 90 \footnote{90 den odpovídá počátku dubna - počátku letního období}
 a tímto je docíleno, že modelový čas odpovídá svým začátkem pomyslnému začátku roku reálného světa.
 
@@ -523,7 +613,10 @@ a tímto je docíleno, že modelový čas odpovídá svým začátkem pomyslném
 
 Nezaměňujte pojmy testování a experimentování (důvod pro bodovou ztrátu)!!!
 Zopakovat/shrnout co přesně chcete zjistit experimentováním a proč k tomu potřebujete model. Pokud experimentování nemá cíl, je celý projekt špatně. Je celkem přípustné u experimentu odhalit chybu v modelu, kterou na základě experimentu opravíte. Pokud se v některém experimentu nechová model podle očekávání, je nutné tento experiment důkladně prověřit a chování modelu zdůvodnit (je to součást simulačnické profese). Pokud model pro některé vstupy nemá důvěryhodné výsledky, je nutné to zdokumentovat. Pochopitelně model musí mít důvěryhodné výsledky pro většinu myslitelných vstupů.
+\subsection{Postup experimentování}
+
 kapitola 5.1: Naznačit postup experimentování – jakým způsobem hodláte prostřednictvím experimentů dojít ke svému cíli (v některých situacích je přípustné "to zkoušet tak dlouho až to vyjde", ale i ty musí mít nějaký organizovaný postup).
+\subsection{Jednotlivé experimenty}
 kapitola 5.2: Dokumentace jednotlivých experimentů - souhrn vstupních podmínek a podmínek běhu simulace, komentovaný výpis výsledků, závěr experimentu a plán pro další experiment (např. v experimentu 341. jsem nastavil vstup x na hodnotu X, která je typická pro ... a vstup y na Y, protože chci zjistit chování systému v prostředi ... Po skončení běhu simulace byly získány tyto výsledky ..., kde je nejzajímavější hodnota sledovaných veličin a,b,c které se chovaly podle předpokladu a veličin d,e,f které ne. Lze z toho usoudit, že v modelu není správně implementováno chování v podmínkách ... a proto v následujících experimentech budu vycházet z modifikovaného modelu verze ... Nebo výsledky ukazují, že systém v těchto podmínkách vykazuje značnou citlivost na parametr x ... a proto bude dobré v dalších experimentech přesně prověřit chování systému na parametr x v intervalu hodnot ... až ...)
 kapitola 5.3: Závěry experimentů – bylo provedeno N experimentů v těchto situacích ... V průběhu experimentování byla odstraněna ... chyba v modelu. Z experimentů lze odvodit chování systémů s dostatečnou věrohodností a experimentální prověřování těchto ... situací již napřinese další výsledky, neboť ...
 
