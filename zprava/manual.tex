@@ -497,7 +497,7 @@ a přepravním zpožděním 6 hodin.
 
 \newpage
 
-\section{Koncepce - modelářská témata}
+\section{Koncepce}
 
 %Konceptuální model je abstrakce reality a redukce reality na soubor relevantních faktů pro sestavení simulačního modelu. Předpokládáme, že model bude obsahovat fakta z "Rozboru tématu". Pokud jsou některá vyřazena nebo modifikována, je nuto to zde zdůvodnit (například: zkoumaný subjekt vykazuje v jednom procentu případů toto chování, ovšem pro potřeby modelu je to naprosto marginální a smíme to zanedbat, neboť ...). Pokud některé partie reality zanedbáváte nebo zjednodušujete, musí to být zdůvodněno a v ideálním případě musí být prokázáno, že to neovlivní validitu modelu. Cílem konceptuálního (abstraktního) modelu je formalizovat relevantní fakta o modelovaném systému a jejich vazby. Podle koncept. modelu by měl být každý schopen sestavit simulační model.
 
@@ -540,18 +540,13 @@ scénářů\footnote{Pokud by byla potřeba tuto skutečnost nezanedbávat,
 docílilo by se toho například zvýšením počátečních zásob zemí o hodnotu,
 která se spotřebuje, než dojde první dodávka plynu.}.
 
-\section{Koncepce - implementační témata}
-
-Popište abstraktně architekturu vašeho programu, princip jeho činnosti, významné datové struktury a podobně. Smyslem této kapitoly je podat informaci o programu bez použití názvů tříd, funkcí a podobně. Tuto kapitolu by měl pochopit každý technik i bez informatického vzdělání. Vyjadřovacími prostředky jsou vývojové diagramy, schémata, vzorce, algoritmy v pseudokódu a podobně. Musí zde být vysvětlena nosná myšlenka vašeho přístupu.
-
-
 \section{Architektura simulačního modelu/simulátoru}
 
 %Tato kapitola má různou důležitost pro různé typy zadání. U implementačních témat lze tady očekávat jádro dokumentace. Zde můžete využít zajímavého prvku ve vašem simulačním modelu a tady ho "prodat".
 %kapitola 4.1: Minimálně je nutno ukázat mapování abstraktního (koncept.) modelu do simulačního (resp. simulátoru). Např. které třídy odpovídají kterým procesům/veličinám a podobně.
 
 Vzhledem k jednoduchosti modelu a použití
-disktrétního času\cite[str,22]{IMS} byla vybrána koncepce,
+disktrétního času \cite[str,22]{IMS} byla vybrána koncepce,
 kdy jádro programu tvoří cyklus \texttt{while}, ve kterém se
 vykonávají akce transportu, spotřeby, exportu a importu.
 Odlišnost v jednotlivých typech simulací je ve funkcích
