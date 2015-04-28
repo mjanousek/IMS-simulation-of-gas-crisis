@@ -1,5 +1,5 @@
 //
-// Author      : code & analysis: xjanou14, documentation & analysis: xfiala46
+// Author      : code & analysis: xjanou14 Martin Janousek, documentation & analysis: xfiala46 Marek Fiala
 // Version     : 1.5
 // Description : IMS projekt - plynova krize
 //============================================================================
