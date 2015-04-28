@@ -1,5 +1,5 @@
 //
-// Author      : xjanou14, xfiala46
+// Author      : code & analysis: xjanou14, documentation & analysis: xfiala46
 // Version     : 1.5
 // Description : IMS projekt - plynova krize
 //============================================================================
@@ -200,7 +200,7 @@ bool transakceTransport(sTransport * transport) {
 bool transakceProved(sTransakce transakce) {
 	if ((staty[transakce.dst].kapacita
 			>= (staty[transakce.dst].zasoba + transakce.mnozstvi))) {
-//		cout<<"transakce:" << transakce.mnozstvi << " do:" << transakce.dst <<endl;
+
 		staty[transakce.dst].zasoba += transakce.mnozstvi;
 		statistika[transakce.dst].celkImport += transakce.mnozstvi;
 		return true;
@@ -213,9 +213,7 @@ bool transakceProved(sTransakce transakce) {
 
 		}
 
-//		cout << "Preposilam z: " << transakce.dst << "do :" << min << "mnozstvi:" <<transakce.mnozstvi << endl;
-//		int b = 2;
-//	    scanf("%d",&b);
+
 
 		transakce.time = timeTable[min][transakce.dst];
 		transakce.dst = min;
@@ -231,7 +229,7 @@ void transakceCheck() {
 			transakceProved(t);
 			transakce.erase(transakce.begin() + i);
 		} else {
-//			cout<< transakce.at(i).time<< ", " ;
+
 			transakce.at(i).time -= 1;
 		}
 	}
@@ -254,7 +252,6 @@ bool spotrebuj(sCountry * s, int p) {
 	statistika[p].celkProdukce += s->produkce;
 
 	//spotreba
-//	cout << s->spotreba[RO] <<endl;
 	if (s->zasoba > s->spotreba[RO]) {
 		s->zasoba -= s->spotreba[RO];
 		statistika[p].celkSpotreba += s->produkce;
