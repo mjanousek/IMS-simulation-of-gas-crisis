@@ -591,7 +591,11 @@ Následovně se vloží do vektoru transakcí informace o přesunu plynu mezi je
 a odečte se dané množství od zásob zdrojové země.
 
 Na závěr se provede průchod vektorem transakcí a transakce,
-jež mají být provedeny v aktuálním čase se provedou\footnote{funkce \texttt{transakceCheck()}}. 
+jež mají být provedeny v aktuálním čase se provedou\footnote{funkce \texttt{transakceCheck()}}.
+
+\subsection{Přeposílání přebytků}
+
+Zajímavá část simulátoru se týká přeposílání přebytků ve funkci \texttt{transakceProved()}. U každého státu může nastat situace, kdy má plný zásobník a přijde mu dodávka plynu. Tato dodávka se nemůže nikam ztratit a ani uložit do zásobníku. Implementačně byl tento problém vyřešen zkontrolováním stavů zásobníků ostatních zemí a případné transakci do země s nejnižším množstvím plynu v zásobníku. Tento postup simuluje jakýsi obchod s plynem mezi zeměmi. 
 
 \subsection{Modelový čas}
 
@@ -608,6 +612,10 @@ a spotřeba jednotlivých států je přepnuta na hodnotu odpovídající daném
 
 Inicializační hodnota hodnoty značící začátek nového období je 90 \footnote{90 den odpovídá počátku dubna - počátku letního období}
 a tímto je docíleno, že modelový čas odpovídá svým začátkem pomyslnému začátku roku reálného světa.
+
+\subsection{Tisk výsledku simulace}
+
+Pro uchování základních informací o dané zemi, jako je například počáteční stav zásobníku, případný čas vyčerpání zásob a podobně, je vytvořeno pole struktur \texttt{sStatistika}. Tyto struktury jsou následně upravovány v průběhu simulace v závislosti na určitých akcích\footnote{Vyčerpání zásob plynu a pod.}.
 
 \section{Podstata simulačních experimentů a jejich průběh}
 

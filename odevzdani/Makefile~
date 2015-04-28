@@ -1,0 +1,5 @@
+CC=g++
+CFLAGS=-pedantic -Wall -Werror
+
+IMS: IMS.cpp
+	$(CC) $(CFLAGS) IMS.cpp -o IMS
